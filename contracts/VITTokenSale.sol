@@ -52,12 +52,8 @@ contract VITTokenSale is Claimable {
     mapping (address => uint256) public participationCaps;
 
     // Initial allocations.
-    address public tokkenMsbIncAddress;
-    address public strategicPartnersAddress;
-    address public steemHoldersAddress;
-    uint256 public constant TOKKEN_MSB_INC_ALLOCATION = 10 ** 9 * TOKEN_UNIT; // 1B
-    uint256 public constant STRATEGIC_PARTNERS_ALLOCATION = 600 * 10 ** 6 * TOKEN_UNIT; // 600M
-    uint256 public constant STEEM_HOLDERS_ALLOCATION = 400 * 10 ** 6 * TOKEN_UNIT; // 400M
+    address[20] public strategicPartnersPools;
+    uint256 public constant STRATEGIC_PARTNERS_POOL_ALLOCATION = 100 * 10 ** 6 * TOKEN_UNIT; // 100M
 
     event TokensIssued(address indexed to, uint256 tokens);
     event EtherRefunded(address indexed from, uint256 weiAmount);
@@ -96,17 +92,16 @@ contract VITTokenSale is Claimable {
     /// @param _fundingRecipient address The address of the funding recipient.
     /// @param _startTime uint256 The start time of the token sale.
     /// @param _vitPerWei uint256 The exchange rate of VIT for one ETH.
-    /// @param _tokkenMsbIncAddress address The address of Tokken MSB Inc.
-    /// @param _strategicPartnersAddress address The address of strategic partners, advisors and pre-sales.
-    /// @param _steemHoldersAddress address The address of Steem holders.
+    /// @param _strategicPartnersPools address[20] The addresses of the 20 strategic partners pools.
     function VITTokenSale(address _fundingRecipient, uint256 _startTime, uint256 _vitPerWei,
-        address _tokkenMsbIncAddress, address _strategicPartnersAddress, address _steemHoldersAddress) public {
+        address[20] _strategicPartnersPools) public {
         require(_fundingRecipient != address(0));
         require(_startTime > now);
         require(_vitPerWei > 0);
-        require(_tokkenMsbIncAddress != address(0));
-        require(_strategicPartnersAddress != address(0));
-        require(_steemHoldersAddress != address(0));
+
+        for (uint i = 0; i < _strategicPartnersPools.length; ++i) {
+            require(_strategicPartnersPools[i] != address(0));
+        }
 
         // Deploy new VITToken contract.
         vitToken = new VITToken();
@@ -114,9 +109,7 @@ contract VITTokenSale is Claimable {
         fundingRecipient = _fundingRecipient;
         startTime = _startTime;
         vitPerWei = _vitPerWei;
-        tokkenMsbIncAddress = _tokkenMsbIncAddress;
-        strategicPartnersAddress = _strategicPartnersAddress;
-        steemHoldersAddress = _steemHoldersAddress;
+        strategicPartnersPools = _strategicPartnersPools;
 
         endTime = startTime.add(SALE_DURATION);
         refundEndTime = endTime.add(REFUND_PERIOD_DURATION);
@@ -290,9 +283,9 @@ contract VITTokenSale is Claimable {
 
     /// @dev Initialize token grants.
     function grantInitialAllocations() private onlyOwner {
-        issueTokens(tokkenMsbIncAddress, TOKKEN_MSB_INC_ALLOCATION);
-        issueTokens(strategicPartnersAddress, STRATEGIC_PARTNERS_ALLOCATION);
-        issueTokens(steemHoldersAddress, STEEM_HOLDERS_ALLOCATION);
+        for (uint i = 0; i < strategicPartnersPools.length; ++i) {
+            issueTokens(strategicPartnersPools[i], STRATEGIC_PARTNERS_POOL_ALLOCATION);
+        }
     }
 
     /// @dev Issues tokens for the recipient.

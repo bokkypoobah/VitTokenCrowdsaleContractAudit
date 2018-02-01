@@ -5,9 +5,8 @@ import "../../contracts/VITTokenSale.sol";
 
 contract VITTokenSaleMock is VITTokenSale {
     function VITTokenSaleMock(address _fundingRecipient, uint256 _startTime, uint256 _vitPerWei,
-        address _tokkenMsbIncAddress, address _strategicPartnersAddress, address _steemHoldersAddress) public
-        VITTokenSale(_fundingRecipient, _startTime, _vitPerWei, _tokkenMsbIncAddress, _strategicPartnersAddress,
-        _steemHoldersAddress) {
+        address[20] _strategicPartnersPools) public
+        VITTokenSale(_fundingRecipient, _startTime, _vitPerWei, _strategicPartnersPools) {
     }
 
     function setTokensSold(uint256 _tokensSold) public {

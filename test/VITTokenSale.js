@@ -28,12 +28,30 @@ contract('VITTokenSale', (accounts) => {
   const RESTRICTED_PERIOD_DURATION = 1 * DAY;
   const REFUND_PERIOD_DURATION = 180 * DAY;
 
-  const TOKKEN_MSB_INC_ADDRESS = '0x1ed4304324baf24e826f267861bfbbad50228599';
-  const TOKKEN_MSB_INC_ALLOCATION = new BigNumber(10 ** 9).mul(TOKEN_UNIT);
-  const STRATEGIC_PARTNERS_ADDRESS = '0x6f46cf5569aefa1acc1009290c8e043747172d89';
-  const STRATEGIC_PARTNERS_ALLOCATION = new BigNumber(600 * (10 ** 6)).mul(TOKEN_UNIT);
-  const STEEM_HOLDERS_ADDRESS = '0x90e63c3d53e0ea496845b7a03ec7548b70014a91';
-  const STEEM_HOLDERS_ALLOCATION = new BigNumber(400 * (10 ** 6)).mul(TOKEN_UNIT);
+  const STRATEGIC_PARTNERS_POOLS = [
+    '0x2e45c5b4103f95a0135135b1e18598ded35ca1db',
+    '0xcf7d979e3a3e8fbc22f3bfcbe8d9239b6bff6cef',
+    '0x00a7493399b0e6b9c4c0bda02365ea868bb6dbf9',
+    '0x153ee929806383a2160a0292a7d854588b4e458a',
+    '0x95d937eb2efc5a6270c282ef1174b5f8624ec3ac',
+    '0xfcdd3218988e3ea61fccaf8465f7d79cb95d7bad',
+    '0x9dfb0935641c33314312beed90aa139d5a80010d',
+    '0x95745e2b30a25483b763b40c2f1cf1cf30586016',
+    '0x59adf303183ae61a0a04d74308152840599788a1',
+    '0x86020fe369b7c946d965a4dd77531ad2838450c9',
+    '0xfaf9d7a08298b347bf7e92383c78b69decf8f938',
+    '0xd7045d13470dcd0ebd9ab1b493c4244d45bd607e',
+    '0xeaa2324de07a430ba15258cc488511f64ae91f94',
+    '0x92ec9d8bd961da8f89f6b71f6892abaa89ce2223',
+    '0xd1ba6a403b761c009c9054987ab897c8418ab670',
+    '0x59d83d4dbbbc80cfc9f3dbc6e86d3a62ae9458ab',
+    '0xf3278783d956e0154c2b920a86e35f1cf7b769da',
+    '0xb734f4e9f5f078213e66f79b01eb699040edf0f3',
+    '0x46bbbc4a1c098ae58e00ee94e7e0cdc5c460defa',
+    '0x629e21ad0724ec78fb330e9824ceced4bcc4a67a',
+  ];
+
+  const STRATEGIC_PARTNERS_POOL_ALLOCATION = new BigNumber(100 * (10 ** 6)).mul(TOKEN_UNIT);
 
   let now;
 
@@ -55,51 +73,40 @@ contract('VITTokenSale', (accounts) => {
     const vitPerWei = 1000;
 
     it('should not allow to initialize with null funding recipient address', async () => {
-      await expectRevert(VITTokenSaleMock.new(null, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS));
+      await expectRevert(VITTokenSaleMock.new(null, now + 100, vitPerWei, STRATEGIC_PARTNERS_POOLS));
     });
 
     it('should not allow to initialize with null funding recipient address', async () => {
-      await expectRevert(VITTokenSaleMock.new(0, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS));
+      await expectRevert(VITTokenSaleMock.new(0, now + 100, vitPerWei, STRATEGIC_PARTNERS_POOLS));
     });
 
     it('should not allow to initialize with 0 VIT exchange rate', async () => {
-      await expectRevert(VITTokenSaleMock.new(fundRecipient, now + 100, 0, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS));
+      await expectRevert(VITTokenSaleMock.new(fundRecipient, now + 100, 0, STRATEGIC_PARTNERS_POOLS));
     });
 
     it('should be initialized with a future starting time', async () => {
-      await expectRevert(VITTokenSaleMock.new(fundRecipient, now - 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS));
+      await expectRevert(VITTokenSaleMock.new(fundRecipient, now - 100, vitPerWei, STRATEGIC_PARTNERS_POOLS));
     });
 
-    it('should not allow to initialize with 0 tokken address', async () => {
-      await expectRevert(VITTokenSaleMock.new(0, now + 100, vitPerWei, 0,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS));
+    it('should not allow to initialize with no strategic partner pools addresses tokken address', async () => {
+      await expectRevert(VITTokenSaleMock.new(0, now + 100, vitPerWei, 0, []));
     });
 
-    it('should not allow to initialize with 0 strategic partnership address', async () => {
-      await expectRevert(VITTokenSaleMock.new(0, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        0, STEEM_HOLDERS_ADDRESS));
-    });
-
-    it('should not allow to initialize with 0 steem holders address', async () => {
-      await expectRevert(VITTokenSaleMock.new(0, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, 0));
+    it('should not allow to initialize with 0 strategic partner pools', async () => {
+      const strategicPartnersPools = STRATEGIC_PARTNERS_POOLS.slice(0);
+      strategicPartnersPools[5] = '0x0000000000000000000000000000000000000000';
+      await expectRevert(VITTokenSaleMock.new(0, now + 100, vitPerWei, strategicPartnersPools));
     });
 
     it('should be initialized with a derived ending time', async () => {
       const startTime = now + 100;
-      const sale = await VITTokenSaleMock.new(fundRecipient, startTime, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, startTime, vitPerWei, STRATEGIC_PARTNERS_POOLS);
 
       expect((await sale.endTime()).toNumber()).to.eql(startTime + SALE_DURATION);
     });
 
     it('should deploy the VITToken contract and own it', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect(await sale.vitToken()).not.to.be.zero();
 
       const token = VITToken.at(await sale.vitToken());
@@ -107,74 +114,52 @@ contract('VITTokenSale', (accounts) => {
     });
 
     it('should be initialized with an exchange price', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect((await sale.vitPerWei()).toNumber()).to.eql(vitPerWei);
     });
 
-    it('should be initialized with a tokken msb address', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
-      expect(await sale.tokkenMsbIncAddress()).to.eql(TOKKEN_MSB_INC_ADDRESS);
-    });
+    it('should be initialized with strategic pool partners', async () => {
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, STRATEGIC_PARTNERS_POOLS);
 
-    it('should be initialized with a strategic partners address', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
-      expect(await sale.strategicPartnersAddress()).to.eql(STRATEGIC_PARTNERS_ADDRESS);
-    });
-
-    it('should be initialized with a steem holders address', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
-      expect(await sale.steemHoldersAddress()).to.eql(STEEM_HOLDERS_ADDRESS);
+      for (let i = 0; i < STRATEGIC_PARTNERS_POOLS.length; ++i) {
+        expect(await sale.strategicPartnersPools(i)).to.eql(STRATEGIC_PARTNERS_POOLS[i]);
+      }
     });
 
     it('should be initialized in minting enabled mode', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       const token = VITToken.at(await sale.vitToken());
       expect(await token.mintingFinished()).to.be.false();
     });
 
     it('should be initialized with 0 total sold tokens', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect((await sale.tokensSold()).toNumber()).to.eql(0);
     });
 
     it('should be initialized with 0 total claimable tokens', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect((await sale.totalClaimableTokens()).toNumber()).to.eql(0);
     });
 
     it('should be initialized with false finalizedRefund', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect(await sale.finalizedRefund()).to.be.false();
     });
 
     it('should be ownable', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 10000, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect(await sale.owner()).to.eql(accounts[0]);
     });
 
     it('should allocate initial grants', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 10000, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       const token = VITToken.at(await sale.vitToken());
 
-      expect((await token.balanceOf(TOKKEN_MSB_INC_ADDRESS)).toNumber()).to
-        .eql(TOKKEN_MSB_INC_ALLOCATION.toNumber());
-      expect((await token.balanceOf(STRATEGIC_PARTNERS_ADDRESS)).toNumber()).to
-        .eql(STRATEGIC_PARTNERS_ALLOCATION.toNumber());
-      expect((await token.balanceOf(STEEM_HOLDERS_ADDRESS)).toNumber()).to
-        .eql(STEEM_HOLDERS_ALLOCATION.toNumber());
-
-      expect((await token.totalSupply()).toNumber()).to.eql(TOKKEN_MSB_INC_ALLOCATION
-        .plus(STRATEGIC_PARTNERS_ALLOCATION).plus(STEEM_HOLDERS_ALLOCATION).toNumber());
+      for (let i = 0; i < STRATEGIC_PARTNERS_POOLS.length; ++i) {
+        expect((await token.balanceOf(STRATEGIC_PARTNERS_POOLS[i])).toNumber()).to
+          .eql(STRATEGIC_PARTNERS_POOL_ALLOCATION.toNumber());
+      }
     });
   });
 
@@ -187,8 +172,7 @@ contract('VITTokenSale', (accounts) => {
 
     beforeEach(async () => {
       start = now + startFrom;
-      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, STRATEGIC_PARTNERS_POOLS);
     });
 
     it('should be able to reclaim ERC20 tokens', async () => {
@@ -251,8 +235,7 @@ contract('VITTokenSale', (accounts) => {
 
     // Test all accounts have their participation caps set properly.
     beforeEach(async () => {
-      sale = await VITTokenSaleMock.new(fundRecipient, now + 1000, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      sale = await VITTokenSaleMock.new(fundRecipient, now + 1000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
 
       for (const participant of accounts) {
         expect((await sale.participationCaps(participant)).toNumber()).to.eql(0);
@@ -306,8 +289,7 @@ contract('VITTokenSale', (accounts) => {
 
     beforeEach(async () => {
       start = now + startFrom;
-      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       end = (await sale.endTime()).toNumber();
       token = VITToken.at(await sale.vitToken());
 
@@ -425,8 +407,7 @@ contract('VITTokenSale', (accounts) => {
 
     beforeEach(async () => {
       start = now + startFrom;
-      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       end = (await sale.endTime()).toNumber();
       token = VITToken.at(await sale.vitToken());
 
@@ -581,8 +562,7 @@ contract('VITTokenSale', (accounts) => {
 
     beforeEach(async () => {
       start = now + startFrom;
-      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       end = (await sale.endTime()).toNumber();
       token = VITToken.at(await sale.vitToken());
 
@@ -800,8 +780,7 @@ contract('VITTokenSale', (accounts) => {
 
     beforeEach(async () => {
       start = now + startFrom;
-      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-        STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+      sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       end = (await sale.endTime()).toNumber();
       token = VITToken.at(await sale.vitToken());
 
@@ -1140,8 +1119,7 @@ contract('VITTokenSale', (accounts) => {
 
       beforeEach(async () => {
         start = now + startFrom;
-        sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, TOKKEN_MSB_INC_ADDRESS,
-          STRATEGIC_PARTNERS_ADDRESS, STEEM_HOLDERS_ADDRESS);
+        sale = await VITTokenSaleMock.new(fundRecipient, start, vitPerWei, STRATEGIC_PARTNERS_POOLS);
         end = (await sale.endTime()).toNumber();
         token = VITToken.at(await sale.vitToken());
 
