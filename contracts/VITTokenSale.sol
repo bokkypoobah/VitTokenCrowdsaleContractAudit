@@ -35,7 +35,6 @@ contract VITTokenSale is Claimable {
     uint256 public endTime;
 
     // Refund data and state.
-    uint256 public constant REFUND_PERIOD_DURATION = 180 days;
     uint256 public refundEndTime;
     mapping (address => uint256) public refundableEther;
     mapping (address => uint256) public claimableTokens;
@@ -91,28 +90,29 @@ contract VITTokenSale is Claimable {
     /// @dev Constructor that initializes the sale conditions.
     /// @param _fundingRecipient address The address of the funding recipient.
     /// @param _startTime uint256 The start time of the token sale.
+    /// @param _endTime uint256 The end time of the token sale.
+    /// @param _refundEndTime uint256 The end time of the refunding period.
     /// @param _vitPerWei uint256 The exchange rate of VIT for one ETH.
     /// @param _strategicPartnersPools address[20] The addresses of the 20 strategic partners pools.
-    function VITTokenSale(address _fundingRecipient, uint256 _startTime, uint256 _vitPerWei,
-        address[20] _strategicPartnersPools) public {
+    function VITTokenSale(address _fundingRecipient, uint256 _startTime, uint256 _endTime, uint256 _refundEndTime,
+        uint256 _vitPerWei, address[20] _strategicPartnersPools) public {
         require(_fundingRecipient != address(0));
-        require(_startTime > now);
+        require(_startTime > now && _startTime < _endTime && _endTime < _refundEndTime);
         require(_vitPerWei > 0);
 
         for (uint i = 0; i < _strategicPartnersPools.length; ++i) {
             require(_strategicPartnersPools[i] != address(0));
         }
 
-        // Deploy new VITToken contract.
-        vitToken = new VITToken();
-
         fundingRecipient = _fundingRecipient;
         startTime = _startTime;
+        endTime = _endTime;
+        refundEndTime = _refundEndTime;
         vitPerWei = _vitPerWei;
         strategicPartnersPools = _strategicPartnersPools;
 
-        endTime = startTime.add(SALE_DURATION);
-        refundEndTime = endTime.add(REFUND_PERIOD_DURATION);
+        // Deploy new VITToken contract.
+        vitToken = new VITToken();
 
         // Grant initial token allocations.
         grantInitialAllocations();
@@ -176,9 +176,6 @@ contract VITTokenSale is Claimable {
 
     /// @dev Finalizes the token sale event, by stopping token minting.
     function finalize() external onlyAfterSale {
-        // Start the refund period from the exact moment of the end of the sale.
-        refundEndTime = now.add(REFUND_PERIOD_DURATION);
-
         // Issue any unsold tokens back to the company.
         if (tokensSold < MAX_TOKENS_SOLD) {
             issueTokens(fundingRecipient, MAX_TOKENS_SOLD.sub(tokensSold));
