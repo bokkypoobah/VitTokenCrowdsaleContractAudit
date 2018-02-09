@@ -263,11 +263,11 @@ contract VITTokenSale is Claimable {
         claimableTokens[participant] = claimableTokensAmount.sub(tokensToClaim);
         totalClaimableTokens = totalClaimableTokens.sub(tokensToClaim);
 
-        // Transfer the Ether to the participant.
-        participant.transfer(_etherToClaim);
-
         // Transfer the tokens to the beneficiary of the funding.
         assert(vitToken.transfer(fundingRecipient, tokensToClaim));
+
+        // Transfer the Ether to the participant.
+        participant.transfer(_etherToClaim);
 
         EtherRefunded(participant, _etherToClaim);
     }
