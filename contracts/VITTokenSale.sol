@@ -29,7 +29,6 @@ contract VITTokenSale is Claimable {
     uint256 public vitPerWei;
 
     // Sale start and end timestamps.
-    uint256 public constant SALE_DURATION = 30 days;
     uint256 public constant RESTRICTED_PERIOD_DURATION = 1 days;
     uint256 public startTime;
     uint256 public endTime;
