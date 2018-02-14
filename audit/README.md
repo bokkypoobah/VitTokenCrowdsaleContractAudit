@@ -11,3 +11,15 @@
   * [ ] contract VITToken is Claimable, HasNoTokens, MintableToken
 * [ ] [code-review/VITTokenSale.md](code-review/VITTokenSale.md)
   * [ ] contract VITTokenSale is Claimable
+
+### Compiler Warning
+
+```javascript
+ownership/HasNoTokens.sol:20:3: Warning: Function state mutability can be restricted to pure
+  function tokenFallback(address from_, uint256 value_, bytes data_) external {
+  ^
+```
+
+<br />
+
+<hr />

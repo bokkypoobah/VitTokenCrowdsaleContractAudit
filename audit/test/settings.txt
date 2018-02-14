@@ -1,7 +1,7 @@
 IPCFILE=ipc:./testchain/geth.ipc
 PASSWORD=
 
-SOURCEDIR=../contracts
+SOURCEDIR=../../contracts
 
 TOKENSOL=VITToken.sol
 TOKENJS=VITToken.js
