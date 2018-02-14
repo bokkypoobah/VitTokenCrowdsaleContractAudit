@@ -21,6 +21,18 @@ contract VITToken is Claimable, HasNoTokens, MintableToken {
 
     }
 
+    /// @dev Approve the passed address to spend the specified amount of tokens on behalf of msg.sender.
+    /// @param _spender address The address which will spend the funds.
+    /// @param _value uint256 The amount of tokens to be spent.
+    function approve(address _spender, uint256 _value) public returns (bool) {
+        // https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+        if ((_value != 0) && (allowed[msg.sender][_spender] != 0)) {
+            revert();
+        }
+
+        return super.approve(_spender, _value);
+    }
+
     /// @dev Same ERC20 behavior, but reverts if still minting.
     /// @param _to address The address to transfer to.
     /// @param _value uint256 The amount to be transferred.

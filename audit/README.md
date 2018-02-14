@@ -8,8 +8,9 @@ Status: Work in progress
 
 Bok Consulting Pty Ltd was commissioned to perform an private audit on the Ethereum smart contracts for Vice Industry's crowdsale.
 
-This audit has been conducted on Vice Industry's source code in commit
-[74281cb](https://github.com/ViceIndustryToken/vit-token/tree/74281cbf6e16b5752faeac20c22a0ad755f00bc2).
+This audit has been conducted on Vice Industry's source code in commits
+[74281cb](https://github.com/ViceIndustryToken/vit-token/tree/74281cbf6e16b5752faeac20c22a0ad755f00bc2) and
+[fcf624a](https://github.com/ViceIndustryToken/vit-token/tree/fcf624a0b8a7115aa17d3a3c15ff453ae05d72a8).
 
 TODO: Check that no potential vulnerabilities have been identified in the crowdsale and token contracts.
 
@@ -35,7 +36,16 @@ TODO: Check that no potential vulnerabilities have been identified in the crowds
 
 ## Recommendations
 
-TODO
+* **LOW IMPORTANCE** The [ERC20 token standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) does not recommend
+  that the smart contract enforces the requirement to set the allowance to 0 before setting it to a non-0 value. From
+  [here](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#approve):
+
+  > NOTE: To prevent attack vectors like the one described here and discussed here, clients SHOULD make sure to create user interfaces
+  > in such a way that they set the allowance first to 0 before setting it to another value for the same spender. THOUGH The contract
+  > itself shouldn't enforce it, to allow backwards compatibility with contracts deployed before
+
+  Here is the commit to update the `approve(...)` functionality in OpenZeppelin -
+  [change approve() to conform to ERC20. Fix #438](https://github.com/OpenZeppelin/zeppelin-solidity/commit/83918cad4b9f5bea6dcb3c0c18f3295b2484c825)
 
 <br />
 
@@ -201,4 +211,4 @@ ownership/HasNoTokens.sol:20:3: Warning: Function state mutability can be restri
 
 <br />
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for Vice Industry - Feb 14 2017. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Vice Industry - Feb 15 2017. The MIT Licence.

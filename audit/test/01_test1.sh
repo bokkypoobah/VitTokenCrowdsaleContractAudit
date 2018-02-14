@@ -98,8 +98,8 @@ console.log("RESULT: ");
 var crowdsaleMessage = "Deploy Crowdsale Contract";
 // 0.05 per VIT
 // ETH/USD = 902.61
-// 0.05 / 902.61 = 0.000055394910316
-var vitPerWei = "55394910316000";
+// 902.61 / 0.05 = 18052.2
+var vitPerWei = "18052";
 var strategicPartnersPools = [eth.accounts[12], eth.accounts[13], eth.accounts[14], eth.accounts[15], eth.accounts[16], eth.accounts[17], eth.accounts[18], eth.accounts[19], eth.accounts[20], eth.accounts[21], eth.accounts[22],eth.accounts[23], eth.accounts[24], eth.accounts[25], eth.accounts[26], eth.accounts[27], eth.accounts[28], eth.accounts[29], eth.accounts[30], eth.accounts[31]];
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + crowdsaleMessage);
@@ -136,7 +136,63 @@ printTokenContractDetails();
 console.log("RESULT: ");
 
 
-waitUntil("START_DATE", crowdsale.START_DATE(), 0);
+// -----------------------------------------------------------------------------
+var setCaps_Message = "Set Caps";
+var capAccounts = [account3, account4, account5];
+var capAmount = web3.toWei(10, "ether");
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + setCaps_Message);
+var setCaps_1Tx = crowdsale.setRestrictedParticipationCap(capAccounts, capAmount, {from: contractOwnerAccount, gas: 100000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(setCaps_1Tx, setCaps_Message);
+printTxData("setCaps_1Tx", setCaps_1Tx);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+waitUntil("startTime", crowdsale.startTime(), 0);
+
+
+// -----------------------------------------------------------------------------
+var sendContribution0Message = "Send Contribution #0 - During restricted participation period";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + sendContribution0Message);
+var sendContribution0_1Tx = eth.sendTransaction({from: account5, to: crowdsaleAddress, gas: 400000, value: web3.toWei("0.5", "ether")});
+var sendContribution0_2Tx = eth.sendTransaction({from: account6, to: crowdsaleAddress, gas: 400000, value: web3.toWei("0.5", "ether")});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(sendContribution0_1Tx, sendContribution0Message + " - ac5 0.5 ETH");
+passIfTxStatusError(sendContribution0_2Tx, sendContribution0Message + " - ac6 0.5 ETH - Expecting failure - no cap");
+printTxData("sendContribution0_1Tx", sendContribution0_1Tx);
+printTxData("sendContribution0_2Tx", sendContribution0_2Tx);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+waitUntil("startTime + RESTRICTED_PERIOD_DURATION", crowdsale.startTime(), 30);
+
+
+// -----------------------------------------------------------------------------
+var sendContribution1Message = "Send Contribution #0 - After restricted participation period";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + sendContribution1Message);
+var sendContribution1_1Tx = eth.sendTransaction({from: account5, to: crowdsaleAddress, gas: 400000, value: web3.toWei("5", "ether")});
+var sendContribution1_2Tx = eth.sendTransaction({from: account6, to: crowdsaleAddress, gas: 400000, value: web3.toWei("5", "ether")});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(sendContribution1_1Tx, sendContribution1Message + " - ac5 5 ETH");
+failIfTxStatusError(sendContribution1_2Tx, sendContribution1Message + " - ac6 5 ETH");
+printTxData("sendContribution1_1Tx", sendContribution1_1Tx);
+printTxData("sendContribution1_2Tx", sendContribution1_2Tx);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
 
 
 exit;

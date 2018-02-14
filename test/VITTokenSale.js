@@ -71,49 +71,55 @@ contract('VITTokenSale', (accounts) => {
     const vitPerWei = 1000;
 
     it('should not allow to initialize with null funding recipient address', async () => {
-      await expectRevert(VITTokenSaleMock.new(null, now + 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS));
+      await expectRevert(VITTokenSaleMock.new(null, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS));
     });
 
     it('should not allow to initialize with null funding recipient address', async () => {
-      await expectRevert(VITTokenSaleMock.new(0, now + 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS));
+      await expectRevert(VITTokenSaleMock.new(0, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS));
     });
 
     it('should not allow to initialize with 0 VIT exchange rate', async () => {
-      await expectRevert(VITTokenSaleMock.new(fundRecipient, now + 100, now + 1000, now + 10000, 0,
-        STRATEGIC_PARTNERS_POOLS));
+      await expectRevert(VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, 0, STRATEGIC_PARTNERS_POOLS));
     });
 
     it('should be initialized with a future starting time', async () => {
-      await expectRevert(VITTokenSaleMock.new(fundRecipient, now - 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS));
+      await expectRevert(VITTokenSaleMock.new(fundRecipient, now - 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS));
     });
 
-    it('should be initialized with an ending time after the starting time', async () => {
+    it('should be initialized with an ending time before the starting time', async () => {
       await expectRevert(VITTokenSaleMock.new(fundRecipient, now + 100, now - 99, now + 10000, vitPerWei,
         STRATEGIC_PARTNERS_POOLS));
     });
 
+    it('should be initialized with an ending time after the restricted period', async () => {
+      await expectRevert(VITTokenSaleMock.new(fundRecipient, now + 100, now + 100 + (RESTRICTED_PERIOD_DURATION - 1),
+        now + RESTRICTED_PERIOD_DURATION + 100000, vitPerWei, STRATEGIC_PARTNERS_POOLS));
+    });
+
     it('should be initialized with a refund ending time after the ending time', async () => {
-      await expectRevert(VITTokenSaleMock.new(fundRecipient, now + 100, now + 1000, now + 500, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS));
+      await expectRevert(VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 500, vitPerWei, STRATEGIC_PARTNERS_POOLS));
     });
 
     it('should not allow to initialize with no strategic partner pools addresses tokken address', async () => {
-      await expectRevert(VITTokenSaleMock.new(0, now + 100, now + 1000, now + 10000, vitPerWei, 0, []));
+      await expectRevert(VITTokenSaleMock.new(0, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, 0, []));
     });
 
     it('should not allow to initialize with 0 strategic partner pools', async () => {
       const strategicPartnersPools = STRATEGIC_PARTNERS_POOLS.slice(0);
       strategicPartnersPools[5] = '0x0000000000000000000000000000000000000000';
-      await expectRevert(VITTokenSaleMock.new(0, now + 100, now + 1000, now + 10000, vitPerWei,
-        strategicPartnersPools));
+      await expectRevert(VITTokenSaleMock.new(0, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, strategicPartnersPools));
     });
 
     it('should deploy the VITToken contract and own it', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect(await sale.vitToken()).not.to.be.zero();
 
       const token = VITToken.at(await sale.vitToken());
@@ -121,14 +127,14 @@ contract('VITTokenSale', (accounts) => {
     });
 
     it('should be initialized with an exchange price', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect((await sale.vitPerWei()).toNumber()).to.eql(vitPerWei);
     });
 
     it('should be initialized with strategic pool partners', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
 
       for (let i = 0; i < STRATEGIC_PARTNERS_POOLS.length; ++i) {
         expect(await sale.strategicPartnersPools(i)).to.eql(STRATEGIC_PARTNERS_POOLS[i]);
@@ -136,39 +142,39 @@ contract('VITTokenSale', (accounts) => {
     });
 
     it('should be initialized in minting enabled mode', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       const token = VITToken.at(await sale.vitToken());
       expect(await token.mintingFinished()).to.be.false();
     });
 
     it('should be initialized with 0 total sold tokens', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect((await sale.tokensSold()).toNumber()).to.eql(0);
     });
 
     it('should be initialized with 0 total claimable tokens', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect((await sale.totalClaimableTokens()).toNumber()).to.eql(0);
     });
 
     it('should be initialized with false finalizedRefund', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + 1000, now + 10000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 1000,
+        now + RESTRICTED_PERIOD_DURATION + 10000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect(await sale.finalizedRefund()).to.be.false();
     });
 
     it('should be ownable', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 1000, now + 10000, now + 100000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 10000,
+        now + RESTRICTED_PERIOD_DURATION + 100000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       expect(await sale.owner()).to.eql(accounts[0]);
     });
 
     it('should allocate initial grants', async () => {
-      const sale = await VITTokenSaleMock.new(fundRecipient, now + 1000, now + 10000, now + 100000, vitPerWei,
-        STRATEGIC_PARTNERS_POOLS);
+      const sale = await VITTokenSaleMock.new(fundRecipient, now + 100, now + RESTRICTED_PERIOD_DURATION + 10000,
+        now + RESTRICTED_PERIOD_DURATION + 100000, vitPerWei, STRATEGIC_PARTNERS_POOLS);
       const token = VITToken.at(await sale.vitToken());
 
       for (let i = 0; i < STRATEGIC_PARTNERS_POOLS.length; ++i) {
