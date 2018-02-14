@@ -3,7 +3,6 @@ pragma solidity 0.4.18;
 import "zeppelin-solidity/contracts/math/Math.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/ownership/Claimable.sol";
-import "zeppelin-solidity/contracts/ownership/HasNoTokens.sol";
 
 import "./VITToken.sol";
 
