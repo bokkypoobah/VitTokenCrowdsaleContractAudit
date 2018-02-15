@@ -12,7 +12,6 @@ pragma solidity 0.4.18;
 import "zeppelin-solidity/contracts/math/Math.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/ownership/Claimable.sol";
-import "zeppelin-solidity/contracts/ownership/HasNoTokens.sol";
 
 import "./VITToken.sol";
 
@@ -106,6 +105,7 @@ contract VITTokenSale is Claimable {
         uint256 _vitPerWei, address[20] _strategicPartnersPools) public {
         require(_fundingRecipient != address(0));
         require(_startTime > now && _startTime < _endTime && _endTime < _refundEndTime);
+        require(_startTime.add(RESTRICTED_PERIOD_DURATION) < _endTime);
         require(_vitPerWei > 0);
 
         for (uint i = 0; i < _strategicPartnersPools.length; ++i) {
