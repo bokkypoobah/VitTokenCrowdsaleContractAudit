@@ -130,8 +130,8 @@ in [test/test1results.txt](test/test1results.txt) and the detailed output saved 
 
 ## Code Review
 
-* [ ] [code-review/VITToken.md](code-review/VITToken.md)
-  * [ ] contract VITToken is Claimable, HasNoTokens, MintableToken
+* [x] [code-review/VITToken.md](code-review/VITToken.md)
+  * [x] contract VITToken is Claimable, HasNoTokens, MintableToken
 * [ ] [code-review/VITTokenSale.md](code-review/VITTokenSale.md)
   * [ ] contract VITTokenSale is Claimable
 
@@ -148,14 +148,14 @@ From https://github.com/OpenZeppelin/zeppelin-solidity/tree/v1.5.0
   * [ ] library SafeMath
 
 #### Owner
+* [x] [openzeppelin-code-review/ownership/Ownable.md](openzeppelin-code-review/ownership/Ownable.md)
+  * [x] contract Ownable
+* [x] [openzeppelin-code-review/ownership/Claimable.md](openzeppelin-code-review/ownership/Claimable.md)
+  * [x] contract Claimable is Ownable
 * [ ] [openzeppelin-code-review/ownership/CanReclaimToken.md](openzeppelin-code-review/ownership/CanReclaimToken.md)
   * [ ] contract CanReclaimToken is Ownable
-* [ ] [openzeppelin-code-review/ownership/Claimable.md](openzeppelin-code-review/ownership/Claimable.md)
-  * [ ] contract Claimable is Ownable
 * [ ] [openzeppelin-code-review/ownership/HasNoTokens.md](openzeppelin-code-review/ownership/HasNoTokens.md)
   * [ ] contract HasNoTokens is CanReclaimToken
-* [ ] [openzeppelin-code-review/ownership/Ownable.md](openzeppelin-code-review/ownership/Ownable.md)
-  * [ ] contract Ownable
 
 #### Token
 * [ ] [openzeppelin-code-review/token/BasicToken.md](openzeppelin-code-review/token/BasicToken.md)

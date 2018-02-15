@@ -7,45 +7,64 @@ Source file [../../contracts/VITTokenSale.sol](../../contracts/VITTokenSale.sol)
 <hr />
 
 ```javascript
+// BK Ok
 pragma solidity 0.4.18;
 
+// BK Next 3 Ok
 import "zeppelin-solidity/contracts/math/Math.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/ownership/Claimable.sol";
 
+// BK Ok
 import "./VITToken.sol";
 
 
 /// @title VITToken sale contract.
+// BK Ok
 contract VITTokenSale is Claimable {
+    // BK Ok
     using Math for uint256;
+    // BK Ok
     using SafeMath for uint256;
 
     // VIT token contract.
+    // BK Ok
     VITToken public vitToken;
 
     // Received funds are forwarded to this address.
+    // BK Ok
     address public fundingRecipient;
 
     // VIT token unit.
+    // BK Ok
     uint256 public constant TOKEN_UNIT = 10 ** 18;
 
     // Maximum tokens offered in the sale: 2B.
+    // BK Ok
     uint256 public constant MAX_TOKENS_SOLD = 2 * 10 ** 9 * TOKEN_UNIT;
 
     // VIT to 1 wei ratio.
+    // BK Ok
     uint256 public vitPerWei;
 
     // Sale start and end timestamps.
+    // BK Ok
     uint256 public constant RESTRICTED_PERIOD_DURATION = 1 days;
+    // BK Ok
     uint256 public startTime;
+    // BK Ok
     uint256 public endTime;
 
     // Refund data and state.
+    // BK Ok
     uint256 public refundEndTime;
+    // BK Ok
     mapping (address => uint256) public refundableEther;
+    // BK Ok
     mapping (address => uint256) public claimableTokens;
+    // BK Ok
     uint256 public totalClaimableTokens = 0;
+    // BK Ok
     bool public finalizedRefund = false;
 
     // Amount of tokens sold until now in the sale.
@@ -255,6 +274,7 @@ contract VITTokenSale is Claimable {
 
     /// @dev Allows participants to claim refund for their purchased tokens.
     /// @param _etherToClaim uint256 The amount of Ether to claim.
+    // BK TODO - Exit point for ETH. Need to check carefully
     function refundEther(uint256 _etherToClaim) public onlyDuringRefund {
         require(_etherToClaim != 0);
 
@@ -281,14 +301,19 @@ contract VITTokenSale is Claimable {
     }
 
     /// @dev Allows participants to claim refund for all their purchased tokens.
+    // BK TODO - Exit point for ETH. Need to check carefully
+    // BK ? - Anyone who contributed can get a refund after the sale period and before the refund end time
     function refundAllEther() public onlyDuringRefund {
         uint256 refundableEtherAmount = refundableEther[msg.sender];
         refundEther(refundableEtherAmount);
     }
 
     /// @dev Initialize token grants.
+    // BK Ok - Only owner can execute. Called only by the constructor
     function grantInitialAllocations() private onlyOwner {
+        // BK Ok
         for (uint i = 0; i < strategicPartnersPools.length; ++i) {
+            // BK Ok
             issueTokens(strategicPartnersPools[i], STRATEGIC_PARTNERS_POOL_ALLOCATION);
         }
     }
@@ -296,16 +321,22 @@ contract VITTokenSale is Claimable {
     /// @dev Issues tokens for the recipient.
     /// @param _recipient address The address of the recipient.
     /// @param _tokens uint256 The amount of tokens to issue.
+    // BK Ok
     function issueTokens(address _recipient, uint256 _tokens) private {
         // Request VIT token contract to mint the requested tokens for the buyer.
+        // BK NOTE - mint function logs `Transfer(address(0), _to, _amount)` events
+        // BK Ok
         assert(vitToken.mint(_recipient, _tokens));
 
+        // BK Ok - Log event
         TokensIssued(_recipient, _tokens);
     }
 
     /// @dev Returns whether the sale has ended.
     /// @return bool Whether the sale has ended or not.
+    // BK Ok - View function
     function saleEnded() private view returns (bool) {
+        // BK Ok
         return tokensSold >= MAX_TOKENS_SOLD || now >= endTime;
     }
 
@@ -313,19 +344,27 @@ contract VITTokenSale is Claimable {
     /// to participate.
     /// @return bool Whether the sale is during its restricted period, where only white-listed participants are allowed
     /// to participate.
+    // BK NOTE - Used with another check that the period is after startTime
+    // BK Ok - View function
     function saleDuringRestrictedPeriod() private view returns (bool) {
+        // BK Ok
         return now <= startTime.add(RESTRICTED_PERIOD_DURATION);
     }
 
     /// @dev Returns whether the sale is during its refund period.
     /// @return bool whether the sale is during its refund period.
+    // BK Ok - View function
     function saleDuringRefundPeriod() private view returns (bool) {
+        // BK Ok
         return saleEnded() && now <= refundEndTime;
     }
 
+    // BK NOTE - Comment 'during' should be 'after'
     /// @dev Returns whether the sale is during its refund period.
     /// @return bool whether the sale is during its refund period.
+    // BK Ok - View function
     function saleAfterRefundPeriod() private view returns (bool) {
+        // BK Ok
         return saleEnded() && now > refundEndTime;
     }
 }
