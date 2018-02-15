@@ -100,7 +100,8 @@ matches the audited source code, and that the deployment parameters are correctl
 
 ## Risks
 
-TODO
+* ETH contributed by the crowdsale participants is held by the crowdsale contract. Participants can later withdraw their
+  refunds or tokens. The crowdsale contract will have to be carefully checked.
 
 <br />
 
@@ -115,7 +116,13 @@ in [test/test1results.txt](test/test1results.txt) and the detailed output saved 
 
 * [x] Deploy crowdsale contract
   * [x] Deploy token contract
-* [ ] TODO
+  * [x] Tokens distributed to `strategicPartnersPools` accounts
+* [x] Contribute during the `RESTRICTED_PERIOD_DURATION`
+* [x] Contribute after the `RESTRICTED_PERIOD_DURATION`
+* [x] Finalise crowdsale
+* [x] Claim tokens, claim all tokens
+* [x] Refund ethers, refund all ethers
+* [x] Finalise refund
 
 <br />
 

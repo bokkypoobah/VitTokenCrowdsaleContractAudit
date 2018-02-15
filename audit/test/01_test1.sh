@@ -28,9 +28,9 @@ CURRENTTIMES=`date -r $CURRENTTIME -u`
 
 START_DATE=`echo "$CURRENTTIME+30" | bc`
 START_DATE_S=`date -r $START_DATE -u`
-END_DATE=`echo "$CURRENTTIME+60*2" | bc`
+END_DATE=`echo "$CURRENTTIME+60*1+30" | bc`
 END_DATE_S=`date -r $END_DATE -u`
-REFUND_END_DATE=`echo "$CURRENTTIME+60*2+30" | bc`
+REFUND_END_DATE=`echo "$CURRENTTIME+60*2" | bc`
 REFUND_END_DATE_S=`date -r $REFUND_END_DATE -u`
 
 printf "MODE               = '$MODE'\n" | tee $TEST1OUTPUT
@@ -178,18 +178,104 @@ waitUntil("startTime + RESTRICTED_PERIOD_DURATION", crowdsale.startTime(), 30);
 
 
 // -----------------------------------------------------------------------------
-var sendContribution1Message = "Send Contribution #0 - After restricted participation period";
+var sendContribution1Message = "Send Contribution #1 - After restricted participation period";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + sendContribution1Message);
-var sendContribution1_1Tx = eth.sendTransaction({from: account5, to: crowdsaleAddress, gas: 400000, value: web3.toWei("5", "ether")});
-var sendContribution1_2Tx = eth.sendTransaction({from: account6, to: crowdsaleAddress, gas: 400000, value: web3.toWei("5", "ether")});
+var sendContribution1_1Tx = eth.sendTransaction({from: account5, to: crowdsaleAddress, gas: 400000, value: web3.toWei("60000", "ether")});
+while (txpool.status.pending > 0) {
+}
+var sendContribution1_2Tx = eth.sendTransaction({from: account6, to: crowdsaleAddress, gas: 400000, value: web3.toWei("60000", "ether")});
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(sendContribution1_1Tx, sendContribution1Message + " - ac5 5 ETH");
-failIfTxStatusError(sendContribution1_2Tx, sendContribution1Message + " - ac6 5 ETH");
+failIfTxStatusError(sendContribution1_1Tx, sendContribution1Message + " - ac5 60,000 ETH");
+failIfTxStatusError(sendContribution1_2Tx, sendContribution1Message + " - ac6 60,000 ETH");
 printTxData("sendContribution1_1Tx", sendContribution1_1Tx);
 printTxData("sendContribution1_2Tx", sendContribution1_2Tx);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+waitUntil("endTime", crowdsale.endTime(), 0);
+
+
+// -----------------------------------------------------------------------------
+var finalise_Message = "Finalise";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + finalise_Message);
+var finalise_1Tx = crowdsale.finalize({from: contractOwnerAccount, gas: 100000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(finalise_1Tx, finalise_Message);
+printTxData("finalise_1Tx", finalise_1Tx);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var claimTokens_Message = "Claim Tokens";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + claimTokens_Message);
+var claimTokens_1Tx = crowdsale.claimTokens("1000000000000000000000", {from: account5, gas: 100000, gasPrice: defaultGasPrice});
+var claimTokens_2Tx = crowdsale.claimAllTokens({from: account6, gas: 100000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(claimTokens_1Tx, claimTokens_Message + " - ac5 claim 1,000");
+failIfTxStatusError(claimTokens_2Tx, claimTokens_Message + " - ac6 claimAll");
+printTxData("claimTokens_1Tx", claimTokens_1Tx);
+printTxData("claimTokens_2Tx", claimTokens_2Tx);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var refundEthers0_Message = "Refund Ethers #1";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + refundEthers0_Message);
+var refundEthers0_1Tx = crowdsale.refundEther("1000000000000000000000", {from: account5, gas: 100000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(refundEthers0_1Tx, refundEthers0_Message + " - ac5 refund 1,000 ETH");
+printTxData("refundEthers0_1Tx", refundEthers0_1Tx);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var refundEthers1_Message = "Refund Ethers #2";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + refundEthers1_Message);
+var refundEthers1_1Tx = crowdsale.refundAllEther({from: account5, gas: 100000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(refundEthers1_1Tx, refundEthers1_Message + " - ac5 refund remaining");
+printTxData("refundEthers1_1Tx", refundEthers1_1Tx);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+waitUntil("refundEndTime", crowdsale.refundEndTime(), 0);
+
+
+// -----------------------------------------------------------------------------
+var finaliseRefund_Message = "Finalise Refund";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + finaliseRefund_Message);
+var finaliseRefund_1Tx = crowdsale.finalizeRefunds({from: contractOwnerAccount, gas: 100000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(finaliseRefund_1Tx, finaliseRefund_Message);
+printTxData("finaliseRefund_1Tx", finaliseRefund_1Tx);
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");

@@ -376,17 +376,31 @@ function printCrowdsaleContractDetails() {
     console.log("RESULT: crowdsale.totalClaimableTokens=" + contract.totalClaimableTokens() + " " + contract.totalClaimableTokens().shift(-18));
     console.log("RESULT: crowdsale.finalizedRefund=" + contract.finalizedRefund());
     console.log("RESULT: crowdsale.tokensSold=" + contract.tokensSold() + " " + contract.tokensSold().shift(-18));
+    console.log("RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=" + contract.STRATEGIC_PARTNERS_POOL_ALLOCATION() + " " + contract.STRATEGIC_PARTNERS_POOL_ALLOCATION().shift(-18));
+
+    console.log("RESULT: crowdsale.refundableEther('" + account3 + "')=" + contract.refundableEther(account3) + " "  + contract.refundableEther(account3).shift(-18));
+    console.log("RESULT: crowdsale.refundableEther('" + account4 + "')=" + contract.refundableEther(account4) + " "  + contract.refundableEther(account4).shift(-18));
+    console.log("RESULT: crowdsale.refundableEther('" + account5 + "')=" + contract.refundableEther(account5) + " "  + contract.refundableEther(account5).shift(-18));
+    console.log("RESULT: crowdsale.refundableEther('" + account6 + "')=" + contract.refundableEther(account6) + " "  + contract.refundableEther(account6).shift(-18));
+    console.log("RESULT: crowdsale.refundableEther('" + account7 + "')=" + contract.refundableEther(account7) + " "  + contract.refundableEther(account7).shift(-18));
+
+    console.log("RESULT: crowdsale.claimableTokens('" + account3 + "')=" + contract.claimableTokens(account3) + " "  + contract.claimableTokens(account3).shift(-18));
+    console.log("RESULT: crowdsale.claimableTokens('" + account4 + "')=" + contract.claimableTokens(account4) + " "  + contract.claimableTokens(account4).shift(-18));
+    console.log("RESULT: crowdsale.claimableTokens('" + account5 + "')=" + contract.claimableTokens(account5) + " "  + contract.claimableTokens(account5).shift(-18));
+    console.log("RESULT: crowdsale.claimableTokens('" + account6 + "')=" + contract.claimableTokens(account6) + " "  + contract.claimableTokens(account6).shift(-18));
+    console.log("RESULT: crowdsale.claimableTokens('" + account7 + "')=" + contract.claimableTokens(account7) + " "  + contract.claimableTokens(account7).shift(-18));
+
     console.log("RESULT: crowdsale.participationHistory('" + account3 + "')=" + contract.participationHistory(account3) + " "  + contract.participationHistory(account3).shift(-18));
     console.log("RESULT: crowdsale.participationHistory('" + account4 + "')=" + contract.participationHistory(account4) + " "  + contract.participationHistory(account4).shift(-18));
     console.log("RESULT: crowdsale.participationHistory('" + account5 + "')=" + contract.participationHistory(account5) + " "  + contract.participationHistory(account5).shift(-18));
     console.log("RESULT: crowdsale.participationHistory('" + account6 + "')=" + contract.participationHistory(account6) + " "  + contract.participationHistory(account6).shift(-18));
     console.log("RESULT: crowdsale.participationHistory('" + account7 + "')=" + contract.participationHistory(account7) + " "  + contract.participationHistory(account7).shift(-18));
+
     console.log("RESULT: crowdsale.participationCaps('" + account3 + "')=" + contract.participationCaps(account3) + " " + contract.participationCaps(account3).shift(-18));
     console.log("RESULT: crowdsale.participationCaps('" + account4 + "')=" + contract.participationCaps(account4) + " " + contract.participationCaps(account4).shift(-18));
     console.log("RESULT: crowdsale.participationCaps('" + account5 + "')=" + contract.participationCaps(account5) + " " + contract.participationCaps(account5).shift(-18));
     console.log("RESULT: crowdsale.participationCaps('" + account6 + "')=" + contract.participationCaps(account6) + " " + contract.participationCaps(account6).shift(-18));
     console.log("RESULT: crowdsale.participationCaps('" + account7 + "')=" + contract.participationCaps(account7) + " " + contract.participationCaps(account7).shift(-18));
-    console.log("RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=" + contract.STRATEGIC_PARTNERS_POOL_ALLOCATION() + " " + contract.STRATEGIC_PARTNERS_POOL_ALLOCATION().shift(-18));
 
     var latestBlock = eth.blockNumber;
     var i;

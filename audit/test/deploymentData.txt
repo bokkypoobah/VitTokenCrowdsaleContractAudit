@@ -1,1 +1,1 @@
-crowdsaleAddress=0x66f6f1da92a72acaeed79e6a19a5ccb9fb8fe1a1
+crowdsaleAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
