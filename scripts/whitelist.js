@@ -2,13 +2,13 @@ require('babel-register');
 require('babel-polyfill');
 
 const Web3 = require('web3');
-const Web3Helper = require('web3-api-helper');
+const web3Helper = require('web3-api-helper').Web3Helper;
 const BigNumber = require('bignumber.js');
 const fs = require('fs');
 const path = require('path');
 const csv = require('csv');
 
-const web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/ciS27F9JQYk8MaJd8Fbu'));
+const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
 
 const ETH = 10 ** 18;
 
@@ -119,73 +119,45 @@ const SET_RESTRICTED_PARTICIPATION_CAPS_ABI = {
 };
 
 const setRestrictedParticipationCaps = async (fromAccount, tokenSaleAddress, gasPriceWei) => {
-  const tiers = [
-    fs.readFileSync(path.join(__dirname, './tier1.csv'), 'utf-8').split('\n').filter(t => t.length > 0),
-    fs.readFileSync(path.join(__dirname, './tier2.csv'), 'utf-8').split('\n').filter(t => t.length > 0),
-    fs.readFileSync(path.join(__dirname, './tier3.csv'), 'utf-8').split('\n').filter(t => t.length > 0),
-  ];
-
-  const gasPrice = web3.utils.toWei(gasPriceWei, 'gwei');
+  const gasPrice = web3.toWei(gasPriceWei, 'gwei');
 
   async function addWhiteListToTier(tier, cap) {
-    console.log(`Adding tier members, with a cap of ${cap}...`);
-
-    let transactions = [];
-    let transactionsInfo = [];
+    console.log(`Adding ${cap} (${new BigNumber(cap).div(ETH)} ETH) tier members...`);
 
     for (let i = 0; i < tier.length; i += BATCH_SIZE) {
-      console.log(`\t[${i} - ${i + BATCH_SIZE}]...`);
-
       const addresses = tier.slice(i, i + BATCH_SIZE);
 
+      console.log(`\t[${i} - ${Math.min(tier.length, i + BATCH_SIZE)}]...`);
       console.log('First address in the batch:', addresses[0]);
       console.log('Last address in the batch:', addresses[addresses.length - 1]);
 
       const setRestrictedParticipants = web3Helper.encodeMethod(SET_RESTRICTED_PARTICIPATION_CAPS_ABI,
         [addresses, cap]);
 
-      transactions.push(web3.eth.sendTransaction({
+      await web3.eth.sendTransaction({
         from: fromAccount,
         to: tokenSaleAddress,
         value: 0,
         data: setRestrictedParticipants,
         gas: 4600000,
         gasPrice,
-      }));
-
-      transactionsInfo.push(addresses);
-
-      if (transactions.length % MAX_TRANSACTIONS === 0) {
-        for (let j = 0; j < transactions.length; ++j) {
-          try {
-            await transactions[j];
-          } catch (error) {
-            if (error.message !== MINING_WARNING) {
-              console.error(`Failed sending transaction for batch starting from ${transactionsInfo[j][0]} with: ${error.message}!!!`);
-            }
-          }
-        }
-
-        transactions = [];
-        transactionsInfo = [];
-      }
-    }
-
-    for (let i = 0; i < transactions.length; ++i) {
-      try {
-        await transactions[i];
-      } catch (error) {
-        if (error.message !== MINING_WARNING) {
-          console.error(`Failed sending transaction for batch starting from ${transactionsInfo[i][0]} with: ` +
-            `${error.message}!!!`);
-        }
-      }
+      });
     }
   }
 
-  await addWhiteListToTier(tiers[0], TIER1_CAP);
-  await addWhiteListToTier(tiers[1], TIER2_CAP);
-  await addWhiteListToTier(tiers[2], TIER2_CAP);
+  [
+    // { tier: './tier1.csv', cap: TIER1_CAP },
+    // { tier: './tier2.csv', cap: TIER2_CAP },
+    { tier: './tier3.csv', cap: TIER3_CAP },
+  ].forEach((data) => {
+    csv.parse(fs.readFileSync(path.join(__dirname, data.tier), 'utf-8'), async (err, caps) => {
+      if (err) {
+        throw new Error(err);
+      }
+
+      await addWhiteListToTier(caps.map(c => c[0]), data.cap);
+    });
+  });
 };
 
 const main = async () => {
@@ -197,7 +169,7 @@ const main = async () => {
   // Next, call the processPresaleRegistrationTransactions with the input file from before. It'll create the
   // first day participation tiers input CSV files.
 
-  // await processPresaleRegistrationTransactions("transactions_4894530-5073009.csv");
+  // await processPresaleRegistrationTransactions("transactions_4894530-5094940.csv");
 
   // Lastly, call the setRestrictedParticipationCaps method with the address of the locally connected owner account,
   // the address of the token sale and the gas price for every transaction.
