@@ -68,18 +68,24 @@ contract VITTokenSale is Claimable {
     bool public finalizedRefund = false;
 
     // Amount of tokens sold until now in the sale.
+    // BK Ok
     uint256 public tokensSold = 0;
 
     // Accumulated amount each participant has contributed so far.
+    // BK Ok
     mapping (address => uint256) public participationHistory;
 
     // Maximum amount that each participant is allowed to contribute (in WEI), during the restricted period.
+    // BK Ok
     mapping (address => uint256) public participationCaps;
 
     // Initial allocations.
+    // BK Ok
     address[20] public strategicPartnersPools;
+    // BK Ok
     uint256 public constant STRATEGIC_PARTNERS_POOL_ALLOCATION = 100 * 10 ** 6 * TOKEN_UNIT; // 100M
 
+    // BK Next 5 Ok - Events
     event TokensIssued(address indexed to, uint256 tokens);
     event EtherRefunded(address indexed from, uint256 weiAmount);
     event TokensClaimed(address indexed from, uint256 tokens);
@@ -87,29 +93,41 @@ contract VITTokenSale is Claimable {
     event FinalizedRefunds();
 
     /// @dev Reverts if called when not during sale.
+    // BK Ok - Modifier
     modifier onlyDuringSale() {
+        // BK Ok
         require(!saleEnded() && now >= startTime);
 
+        // BK Ok
         _;
     }
 
     /// @dev Reverts if called before the sale ends.
+    // BK Ok - Modifier
     modifier onlyAfterSale() {
+        // BK Ok
         require(saleEnded());
 
+        // BK Ok
         _;
     }
 
     /// @dev Reverts if called not doing the refund period.
+    // BK Ok - Modifier
     modifier onlyDuringRefund() {
+        // BK Ok
         require(saleDuringRefundPeriod());
 
+        // BK Ok
         _;
     }
 
+    // BK Ok - Modifier
     modifier onlyAfterRefund() {
+        // BK Ok
         require(saleAfterRefundPeriod());
 
+        // BK Ok
         _;
     }
 
@@ -120,36 +138,53 @@ contract VITTokenSale is Claimable {
     /// @param _refundEndTime uint256 The end time of the refunding period.
     /// @param _vitPerWei uint256 The exchange rate of VIT for one ETH.
     /// @param _strategicPartnersPools address[20] The addresses of the 20 strategic partners pools.
+    // BK Ok - Constructor
     function VITTokenSale(address _fundingRecipient, uint256 _startTime, uint256 _endTime, uint256 _refundEndTime,
         uint256 _vitPerWei, address[20] _strategicPartnersPools) public {
+        // BK Ok
         require(_fundingRecipient != address(0));
+        // BK Ok
         require(_startTime > now && _startTime < _endTime && _endTime < _refundEndTime);
+        // BK Ok
         require(_startTime.add(RESTRICTED_PERIOD_DURATION) < _endTime);
+        // BK Ok
         require(_vitPerWei > 0);
 
+        // BK Ok
         for (uint i = 0; i < _strategicPartnersPools.length; ++i) {
+            // BK Ok
             require(_strategicPartnersPools[i] != address(0));
         }
 
+        // BK Ok
         fundingRecipient = _fundingRecipient;
+        // BK Next 4 Ok
         startTime = _startTime;
         endTime = _endTime;
         refundEndTime = _refundEndTime;
         vitPerWei = _vitPerWei;
+        // BK Ok
         strategicPartnersPools = _strategicPartnersPools;
 
         // Deploy new VITToken contract.
+        // BK Ok
         vitToken = new VITToken();
 
         // Grant initial token allocations.
+        // BK Ok
         grantInitialAllocations();
     }
 
     /// @dev Fallback function that will delegate the request to create().
+    // BK Ok - Anyone can call this fallback function during the sale period
+    // BK TODO
     function () external payable onlyDuringSale {
+        // BK Ok
         address recipient = msg.sender;
 
+        // BK Ok
         uint256 cappedWeiReceived = msg.value;
+        // BK Ok
         uint256 weiAlreadyParticipated = participationHistory[recipient];
 
         // If we're during the restricted period, then only the white-listed participants are allowed to participate,
@@ -195,49 +230,68 @@ contract VITTokenSale is Claimable {
     /// @dev Set restricted period participation caps for a list of addresses.
     /// @param _participants address[] The list of participant addresses.
     /// @param _cap uint256 The cap amount (in ETH).
+    // BK Ok - Only owner can set the caps
     function setRestrictedParticipationCap(address[] _participants, uint256 _cap) external onlyOwner {
+        // BK Ok
         for (uint i = 0; i < _participants.length; ++i) {
+            // BK Ok
             participationCaps[_participants[i]] = _cap;
         }
     }
 
     /// @dev Finalizes the token sale event, by stopping token minting.
+    // BK Ok - Anyone can call this function only after the sale period or the max funding is reached
     function finalize() external onlyAfterSale {
         // Issue any unsold tokens back to the company.
+        // BK Ok
         if (tokensSold < MAX_TOKENS_SOLD) {
+            // BK Ok
             issueTokens(fundingRecipient, MAX_TOKENS_SOLD.sub(tokensSold));
         }
 
         // Finish minting. Please note, that if minting was already finished - this call will revert().
+        // BK Ok
         vitToken.finishMinting();
 
+        // BK Ok - Log event
         Finalized();
     }
 
+    // BK Ok - Only owner can execute after the refund period
     function finalizeRefunds() external onlyAfterRefund {
+        // BK Ok
         require(!finalizedRefund);
 
+        // BK Ok
         finalizedRefund = true;
 
         // Transfer all the Ether to the beneficiary of the funding.
+        // BK Ok
         fundingRecipient.transfer(this.balance);
 
+        // BK Ok - Log event
         FinalizedRefunds();
     }
 
     /// @dev Reclaim all ERC20 compatible tokens, but not more than the VIT tokens which were reserved for refunds.
     /// @param token ERC20Basic The address of the token contract.
+    // BK Ok - Only owner can execute
     function reclaimToken(ERC20Basic token) external onlyOwner {
+        // BK Ok
         uint256 balance = token.balanceOf(this);
+        // BK Ok
         if (token == vitToken) {
+            // BK Ok
             balance = balance.sub(totalClaimableTokens);
         }
 
+        // BK Ok
         assert(token.transfer(owner, balance));
     }
 
     /// @dev Allows participants to claim their tokens, which also transfers the Ether to the funding recipient.
     /// @param _tokensToClaim uint256 The amount of tokens to claim.
+    // BK TODO
     function claimTokens(uint256 _tokensToClaim) public onlyAfterSale {
         require(_tokensToClaim != 0);
 
@@ -267,8 +321,11 @@ contract VITTokenSale is Claimable {
     }
 
     /// @dev Allows participants to claim all their tokens.
+    // BK Ok - Participants who contributed can execute, after the sale period
     function claimAllTokens() public onlyAfterSale {
+        // BK Ok
         uint256 claimableTokensAmount = claimableTokens[msg.sender];
+        // BK Ok
         claimTokens(claimableTokensAmount);
     }
 
@@ -301,10 +358,11 @@ contract VITTokenSale is Claimable {
     }
 
     /// @dev Allows participants to claim refund for all their purchased tokens.
-    // BK TODO - Exit point for ETH. Need to check carefully
-    // BK ? - Anyone who contributed can get a refund after the sale period and before the refund end time
+    // BK Ok - Participants who contributed can execute, during the refund period
     function refundAllEther() public onlyDuringRefund {
+        // BK Ok
         uint256 refundableEtherAmount = refundableEther[msg.sender];
+        // BK Ok
         refundEther(refundableEtherAmount);
     }
 

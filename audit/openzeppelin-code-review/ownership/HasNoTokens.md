@@ -7,8 +7,10 @@ Source file [../../openzeppelin-contracts/ownership/HasNoTokens.sol](../../openz
 <hr />
 
 ```javascript
+// BK Ok
 pragma solidity ^0.4.18;
 
+// BK Ok
 import "./CanReclaimToken.sol";
 
 /**
@@ -18,6 +20,7 @@ import "./CanReclaimToken.sol";
  * Should tokens (any ERC20Basic compatible) end up in the contract, it allows the
  * owner to reclaim the tokens.
  */
+// BK Ok
 contract HasNoTokens is CanReclaimToken {
 
  /**
@@ -26,10 +29,13 @@ contract HasNoTokens is CanReclaimToken {
   * @param value_ uint256 the amount of the specified token
   * @param data_ Bytes The data passed from the caller.
   */
+  // BK Ok - Any ERC223 transfers will be rejected
   function tokenFallback(address from_, uint256 value_, bytes data_) external {
+    // BK Next 3 Ok
     from_;
     value_;
     data_;
+    // BK Ok
     revert();
   }
 
