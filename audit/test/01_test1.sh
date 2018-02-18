@@ -282,26 +282,27 @@ console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
-var transfersMessage = "Move Tokens";
+var transfer1_Message = "Move Tokens #2";
 // -----------------------------------------------------------------------------
-console.log("RESULT: " + transfersMessage);
-var transfers1Tx = token.transfer(account7, "1000000000000", {from: account5, gas: 100000, gasPrice: defaultGasPrice});
-var transfers2Tx = token.approve(account8,  "30000000000000000", {from: account6, gas: 100000, gasPrice: defaultGasPrice});
+console.log("RESULT: " + transfer1_Message);
+var transfer1_1Tx = token.transfer(account7, "1000000000000", {from: account5, gas: 100000, gasPrice: defaultGasPrice});
+var transfer1_2Tx = token.approve(account8,  "30000000000000000", {from: account6, gas: 100000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
-var transfers3Tx = token.transferFrom(account6, account9, "30000000000000000", {from: account8, gas: 100000, gasPrice: defaultGasPrice});
+var transfer1_3Tx = token.transferFrom(account6, account9, "30000000000000000", {from: account8, gas: 100000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printBalances();
-printTxData("transfers1Tx", transfers1Tx);
-printTxData("transfers2Tx", transfers2Tx);
-printTxData("transfers3Tx", transfers3Tx);
-failIfTxStatusError(transfers1Tx, transfersMessage + " - transfer 0.000001 tokens ac5 -> ac7. CHECK for movement");
-failIfTxStatusError(transfers2Tx, transfersMessage + " - approve 0.03 tokens ac6 -> ac8");
-failIfTxStatusError(transfers3Tx, transfersMessage + " - transferFrom 0.03 tokens ac6 -> ac9 by ac8. CHECK for movement");
+printTxData("transfer1_1Tx", transfer1_1Tx);
+printTxData("transfer1_2Tx", transfer1_2Tx);
+printTxData("transfer1_3Tx", transfer1_3Tx);
+failIfTxStatusError(transfer1_1Tx, transfer1_Message + " - transfer 0.000001 tokens ac5 -> ac7. CHECK for movement");
+failIfTxStatusError(transfer1_2Tx, transfer1_Message + " - approve 0.03 tokens ac6 -> ac8");
+failIfTxStatusError(transfer1_3Tx, transfer1_Message + " - transferFrom 0.03 tokens ac6 -> ac9 by ac8. CHECK for movement");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
+
 
 EOF
 grep "DATA: " $TEST1OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA

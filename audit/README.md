@@ -1,7 +1,5 @@
 # VitToken Crowdsale Contract Audit
 
-Status: Work in progress
-
 ## Summary
 
 [Vice Industry](https://vicetoken.com/) intends to run a crowdsale in February 2018.
@@ -13,23 +11,7 @@ This audit has been conducted on Vice Industry's source code in commits
 [fcf624a](https://github.com/ViceIndustryToken/vit-token/tree/fcf624a0b8a7115aa17d3a3c15ff453ae05d72a8) and
 [80a21e8](https://github.com/ViceIndustryToken/vit-token/commit/80a21e8933868125960a6278dc473a3ef61ddce3).
 
-TODO: Check that no potential vulnerabilities have been identified in the crowdsale and token contracts.
-
-### Crowdsale Contract
-
-Participants contribute ethers (ETH) to the crowdsale contract and the tokens are generated for the contributor's account.
-
-The ETH remains in the crowdsale contract until the refund period, and the tokens are assigned to the crowdsale contract.
-
-After the crowdsale contribution period, participants that contributed have to claim all or part of their tokens, or
-claim a refund of all or part of their ETH contributions.
-
-If the participant claims all or part of their tokens, the equivalent ETH is transferred to the crowdsale wallet. If the
-participant claims a refund on all or part of their ETH contribution, the equivalent amount of tokens is transferred to the
-crowdsale wallet.
-
-Participants can only claim their ETH refunds during the refund period, but can claim their tokens any time after the
-sale ends.
+No potential vulnerabilities have been identified in the crowdsale and token contracts.
 
 <br />
 
@@ -72,7 +54,7 @@ sale ends.
 
 ## Potential Vulnerabilities
 
-TODO: Check that no potential vulnerabilities have been identified in the crowdsale and token contracts.
+No potential vulnerabilities have been identified in the crowdsale and token contracts.
 
 <br />
 
@@ -119,11 +101,24 @@ matches the audited source code, and that the deployment parameters are correctl
 
 ## Risks
 
-ETH contributed by the crowdsale participants is held by the crowdsale contract until the end of the refund period.
+Participants contribute ethers (ETH) to the crowdsale contract and the tokens are generated for the contributor's account.
+
+The ETH remains locked in the crowdsale contract until the refund period. The tokens are not transferred to the
+participant's accounts until the end of the crowdsale.
+
+After the crowdsale contribution period, contributing participants have to claim all or part of their tokens, or
+claim a refund of all or part of their ETH contributions.
+
+If the participant claims all or part of their tokens, the equivalent ETH is transferred to the crowdsale wallet. If the
+participant claims a refund on all or part of their ETH contribution, the equivalent amount of tokens is transferred to
+the crowdsale wallet.
+
+Participants can only claim their ETH refunds during the refund period, but can claim their tokens any time after the
+sale ends.
 
 The ETH exit points from the crowdsale contract follow:
 
-* ETH exit point during the contribution period
+* ETH exit point during the contribution period - **low risk**
 
   During the contribution period, the only exit point for ETH is the refund of the participant's sent ETH in excess of
   any contribution limits. This is in the `function ()` fallback function, and the amount is limited to the ETH amount
@@ -131,13 +126,23 @@ The ETH exit points from the crowdsale contract follow:
 
 * ETH exit point during the refund period
 
-  During the refund period, contributing participants can claim an ETH refund by calling the `refundEther(...)` or
-  `refundAllEther()` functions. This is the exit point for ETH other than to the crowdsale wallet.
+  * ETH sent to the participant's wallet - **medium risk** but mitigated through repeated checks
 
-  If the participant claims their tokens by calling `claimTokens(...)` or `claimAllTokens()`, the ETH backing these
-  tokens will be transferred to the crowdsale wallet.
+    During the refund period, contributing participants can claim a refund of their contributed ETH by calling the
+    `refundEther(...)` or `refundAllEther()` functions. This is the critical exit point for ETH to wallets other than
+    to the crowdsale wallet and the logic here has been repeatedly checked.
 
-* ETH exit point after the refund period
+    An attacker cannot use a reentrancy attack like The DAO due to 1) `refundableEther[participant]` recording the 
+    maximum amount the participant can withdraw and this record is updated before calling the
+    `participant.transfer(_etherToClaim)` function that potentially transfers program execution to another smart
+    contract; and 2) the limited gas available to the `participant.transfer(_etherToClaim)` function.
+
+  * ETH sent to the crowdsale wallet - **low risk**
+
+    If the participant claims their tokens by calling `claimTokens(...)` or `claimAllTokens()`, the ETH backing these
+    tokens will be transferred to the crowdsale wallet.
+
+* ETH exit point after the refund period - **low risk**
 
   After the refund period, the crowdsale contract owner calls the `finalizeRefunds()` to transfer the remaining
   ETH to the crowdsale wallet.
@@ -176,8 +181,8 @@ in [test/test1results.txt](test/test1results.txt) and the detailed output saved 
 
 * [x] [code-review/VITToken.md](code-review/VITToken.md)
   * [x] contract VITToken is Claimable, HasNoTokens, MintableToken
-* [ ] [code-review/VITTokenSale.md](code-review/VITTokenSale.md)
-  * [ ] contract VITTokenSale is Claimable
+* [x] [code-review/VITTokenSale.md](code-review/VITTokenSale.md)
+  * [x] contract VITTokenSale is Claimable
 
 <br />
 
@@ -219,8 +224,9 @@ From https://github.com/OpenZeppelin/zeppelin-solidity/tree/v1.5.0
 
 ### MultiSigWallet
 
-The  [../contracts/MultiSigWallet.sol](../contracts/MultiSigWallet.sol) multisig wallet has been compared to the Gnosis multisig wallet at
-https://github.com/gnosis/MultiSigWallet/blob/4b9a417b63e433e353527ba73ef687e0eedc0d11/contracts/MultiSigWallet.sol
+The [../contracts/MultiSigWallet.sol](../contracts/MultiSigWallet.sol) multisig wallet has been compared to the Gnosis
+multisig wallet
+at https://github.com/gnosis/MultiSigWallet/blob/4b9a417b63e433e353527ba73ef687e0eedc0d11/contracts/MultiSigWallet.sol
 and has the following insignificant differences:
 
 ```diff
@@ -237,6 +243,11 @@ $ diff MultiSigWallet.sol GnosisMultisigWallet.sol
 369a371
 > 
 ```
+
+The [../contracts/MultiSigWallet.sol](../contracts/MultiSigWallet.sol) multisig wallet has also been compared to the
+relevant portions of the Gnosis multisig wallet factory contract accessible from https://wallet.gnosis.pm/ and deployed
+to [0x6e95c8e8557abc08b46f3c347ba06f8dc012763f](https://etherscan.io/address/0x6e95c8e8557abc08b46f3c347ba06f8dc012763f#code),
+and there are insignificant differences.
 
 This multisig wallet is out of the scope of this audit.
 
@@ -264,4 +275,4 @@ ownership/HasNoTokens.sol:20:3: Warning: Function state mutability can be restri
 
 <br />
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for Vice Industry - Feb 15 2017. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Vice Industry - Feb 18 2017. The MIT Licence.

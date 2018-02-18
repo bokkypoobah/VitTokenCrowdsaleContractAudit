@@ -176,8 +176,7 @@ contract VITTokenSale is Claimable {
     }
 
     /// @dev Fallback function that will delegate the request to create().
-    // BK Ok - Anyone can call this fallback function during the sale period
-    // BK TODO
+    // BK Ok - Anyone can call this fallback function during the sale period to contribute ETH
     function () external payable onlyDuringSale {
         // BK Ok
         address recipient = msg.sender;
@@ -365,29 +364,42 @@ contract VITTokenSale is Claimable {
 
     /// @dev Allows participants to claim refund for their purchased tokens.
     /// @param _etherToClaim uint256 The amount of Ether to claim.
-    // BK TODO - Exit point for ETH. Need to check carefully
+    // BK Ok - Any participants who contributed can claim a refund of their ETH during the refund period
     function refundEther(uint256 _etherToClaim) public onlyDuringRefund {
+        // BK Ok
         require(_etherToClaim != 0);
 
+        // BK Ok
         address participant = msg.sender;
 
+        // BK Ok
         uint256 refundableEtherAmount = refundableEther[participant];
+        // BK Ok
         require(_etherToClaim <= refundableEtherAmount);
 
+        // BK Ok
         uint256 claimableTokensAmount = claimableTokens[participant];
+        // BK Ok
         uint256 tokensToClaim = _etherToClaim.mul(claimableTokensAmount).div(refundableEtherAmount);
+        // BK Ok
         assert(tokensToClaim > 0);
 
+        // BK Ok
         refundableEther[participant] = refundableEtherAmount.sub(_etherToClaim);
+        // BK Ok
         claimableTokens[participant] = claimableTokensAmount.sub(tokensToClaim);
+        // BK Ok
         totalClaimableTokens = totalClaimableTokens.sub(tokensToClaim);
 
         // Transfer the tokens to the beneficiary of the funding.
+        // BK Ok
         assert(vitToken.transfer(fundingRecipient, tokensToClaim));
 
         // Transfer the Ether to the participant.
+        // BK Ok - Exit point for ETH to the participant's wallet
         participant.transfer(_etherToClaim);
 
+        // BK Ok - Log event
         EtherRefunded(participant, _etherToClaim);
     }
 
