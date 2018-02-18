@@ -376,6 +376,7 @@ function printCrowdsaleContractDetails() {
     console.log("RESULT: crowdsale.totalClaimableTokens=" + contract.totalClaimableTokens() + " " + contract.totalClaimableTokens().shift(-18));
     console.log("RESULT: crowdsale.finalizedRefund=" + contract.finalizedRefund());
     console.log("RESULT: crowdsale.tokensSold=" + contract.tokensSold() + " " + contract.tokensSold().shift(-18));
+    console.log("RESULT: crowdsale.strategicPartnersPools[0,19]=" + contract.strategicPartnersPools(0) + ", " + contract.strategicPartnersPools(19));
     console.log("RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=" + contract.STRATEGIC_PARTNERS_POOL_ALLOCATION() + " " + contract.STRATEGIC_PARTNERS_POOL_ALLOCATION().shift(-18));
 
     console.log("RESULT: crowdsale.refundableEther('" + account3 + "')=" + contract.refundableEther(account3) + " "  + contract.refundableEther(account3).shift(-18));

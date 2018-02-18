@@ -188,41 +188,60 @@ contract VITTokenSale is Claimable {
         uint256 weiAlreadyParticipated = participationHistory[recipient];
 
         // If we're during the restricted period, then only the white-listed participants are allowed to participate,
+        // BK Ok
         if (saleDuringRestrictedPeriod()) {
+            // BK Ok
             uint256 participationCap = participationCaps[recipient];
+            // BK Ok
             cappedWeiReceived = Math.min256(cappedWeiReceived, participationCap.sub(weiAlreadyParticipated));
         }
 
+        // BK Ok
         require(cappedWeiReceived > 0);
 
         // Calculate how much tokens can be sold to this participant.
+        // BK Ok
         uint256 tokensLeftInSale = MAX_TOKENS_SOLD.sub(tokensSold);
+        // BK Ok
         uint256 weiLeftInSale = tokensLeftInSale.div(vitPerWei);
+        // BK Ok
         uint256 weiToParticipate = Math.min256(cappedWeiReceived, weiLeftInSale);
+        // BK Ok
         participationHistory[recipient] = weiAlreadyParticipated.add(weiToParticipate);
 
         // Issue tokens and transfer to recipient.
+        // BK Ok
         uint256 tokensToIssue = weiToParticipate.mul(vitPerWei);
+        // BK Ok
         if (tokensLeftInSale.sub(tokensToIssue) < vitPerWei) {
             // If purchase would cause less than vitPerWei tokens left then nobody could ever buy them, so we'll gift
             // them to the last buyer.
+            // BK Ok
             tokensToIssue = tokensLeftInSale;
         }
 
         // Record the both the participate ETH and tokens for future refunds.
+        // BK Ok
         refundableEther[recipient] = refundableEther[recipient].add(weiToParticipate);
+        // BK Ok
         claimableTokens[recipient] = claimableTokens[recipient].add(tokensToIssue);
 
         // Update token counters.
+        // BK Ok
         totalClaimableTokens = totalClaimableTokens.add(tokensToIssue);
+        // BK Ok
         tokensSold = tokensSold.add(tokensToIssue);
 
         // Issue the tokens to the token sale smart contract itself, which will hold them for future refunds.
+        // BK Ok
         issueTokens(address(this), tokensToIssue);
 
         // Partial refund if full participation not possible, e.g. due to cap being reached.
+        // BK Ok
         uint256 refund = msg.value.sub(weiToParticipate);
+        // BK Ok
         if (refund > 0) {
+            // BK Ok - Exit point for ETH, but only to the max of the ETH sent by the participant
             msg.sender.transfer(refund);
         }
     }
@@ -291,32 +310,47 @@ contract VITTokenSale is Claimable {
 
     /// @dev Allows participants to claim their tokens, which also transfers the Ether to the funding recipient.
     /// @param _tokensToClaim uint256 The amount of tokens to claim.
-    // BK TODO
+    // BK Ok - Any participants who contributed can claim their tokens after the sale period, and during or after the refund period
     function claimTokens(uint256 _tokensToClaim) public onlyAfterSale {
+        // BK Ok
         require(_tokensToClaim != 0);
 
+        // BK Ok
         address participant = msg.sender;
+        // BK Ok
         require(claimableTokens[participant] > 0);
 
+        // BK Ok
         uint256 claimableTokensAmount = claimableTokens[participant];
+        // BK Ok
         require(_tokensToClaim <= claimableTokensAmount);
 
+        // BK Ok
         uint256 refundableEtherAmount = refundableEther[participant];
+        // BK Ok
         uint256 etherToClaim = _tokensToClaim.mul(refundableEtherAmount).div(claimableTokensAmount);
+        // BK Ok
         assert(etherToClaim > 0);
 
+        // BK Ok
         refundableEther[participant] = refundableEtherAmount.sub(etherToClaim);
+        // BK Ok
         claimableTokens[participant] = claimableTokensAmount.sub(_tokensToClaim);
+        // BK Ok
         totalClaimableTokens = totalClaimableTokens.sub(_tokensToClaim);
 
         // Transfer the tokens from the token sale smart contract to the participant.
+        // BK Ok
         assert(vitToken.transfer(participant, _tokensToClaim));
 
         // Transfer the Ether to the beneficiary of the funding (as long as the refund hasn't finalized yet).
+        // BK Ok
         if (!finalizedRefund) {
+            // BK Ok - Exit point for ETH, but only to the crowdsale wallet
             fundingRecipient.transfer(etherToClaim);
         }
 
+        // BK Ok - Log event
         TokensClaimed(participant, _tokensToClaim);
     }
 

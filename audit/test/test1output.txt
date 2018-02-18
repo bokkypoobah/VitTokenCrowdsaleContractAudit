@@ -10,10 +10,10 @@ DEPLOYMENTDATA     = 'deploymentData.txt'
 INCLUDEJS          = './include.js'
 TEST1OUTPUT        = 'test1output.txt'
 TEST1RESULTS       = 'test1results.txt'
-CURRENTTIME        = '1518680450' 'Thu 15 Feb 2018 07:40:50 UTC'
-START_DATE         = '1518680480' 'Thu 15 Feb 2018 07:41:20 UTC'
-END_DATE           = '1518680540' 'Thu 15 Feb 2018 07:42:20 UTC'
-REFUND_END_DATE    = '1518680570' 'Thu 15 Feb 2018 07:42:50 UTC'
+CURRENTTIME        = '1518934628' 'Sun 18 Feb 2018 06:17:08 UTC'
+START_DATE         = '1518934658' 'Sun 18 Feb 2018 06:17:38 UTC'
+END_DATE           = '1518934718' 'Sun 18 Feb 2018 06:18:38 UTC'
+REFUND_END_DATE    = '1518934748' 'Sun 18 Feb 2018 06:19:08 UTC'
 --- Differences ../../contracts/VITToken.sol VITToken.sol ---
 3,5c3,5
 < import "zeppelin-solidity/contracts/ownership/Claimable.sol";
@@ -42,7 +42,7 @@ Welcome to the Geth JavaScript console!
 
 instance: Geth/v1.7.3-stable-4bb3c89d/darwin-amd64/go1.9.2
 coinbase: 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e
-at block: 44962 (Thu, 15 Feb 2018 18:40:51 AEDT)
+at block: 6703 (Sun, 18 Feb 2018 17:17:08 AEDT)
  datadir: /Users/bok/Projects/VitTokenCrowdsaleContractAudit/audit/test/testchain
  modules: admin:1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0
 
@@ -170,11 +170,11 @@ undefined
 ... 
 undefined
 > 
-DATA: crowdsaleAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+DATA: crowdsaleAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003685668000000000           0.000000000000000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003685668000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003666214000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003666214000000000           0.000000000000000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
@@ -205,8 +205,8 @@ RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.00000000000000000
 RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
 RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
 RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
-RESULT: 32 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Crowdsale Contract
-RESULT: 33 0x0ff172c7a940bb6767bf006ff6a244871bf81877        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b        0.000000000000000000           0.000000000000000000 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                            2000000000.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -216,24 +216,25 @@ undefined
 RESULT: PASS Deploy Crowdsale Contract
 1
 > 
-RESULT: crowdsaleAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393 status=0x1 Success gas=6000000 gasUsed=3685668 costETH=0.003685668 costUSD=3.18253746132 @ ETH/USD=863.49 gasPrice=1 gwei block=44973 txIx=0 txId=0xf22016fbdea643ee0c9fbe557a3aeed865f3a305c09ede79e5533b47500686ce @ 1518680462 Thu, 15 Feb 2018 07:41:02 UTC
+RESULT: crowdsaleAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b status=0x1 Success gas=6000000 gasUsed=3666214 costETH=0.003666214 costUSD=3.16573912686 @ ETH/USD=863.49 gasPrice=1 gwei block=6714 txIx=0 txId=0xde3763eafc94b833173766bfa0d70816c56fdafa0521ec6162b000bc4fb6a305 @ 1518934639 Sun, 18 Feb 2018 06:17:19 UTC
 undefined
 > 
-RESULT: crowdsaleContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
-RESULT: crowdsale.vitToken=0x0ff172c7a940bb6767bf006ff6a244871bf81877
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
 RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
 RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
 RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
 RESULT: crowdsale.vitPerWei=18052 1.8052e-14
 RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
-RESULT: crowdsale.startTime=1518680480 Thu, 15 Feb 2018 07:41:20 UTC
-RESULT: crowdsale.endTime=1518680540 Thu, 15 Feb 2018 07:42:20 UTC
-RESULT: crowdsale.refundEndTime=1518680570 Thu, 15 Feb 2018 07:42:50 UTC
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
 RESULT: crowdsale.totalClaimableTokens=0 0
 RESULT: crowdsale.finalizedRefund=false
 RESULT: crowdsale.tokensSold=0 0
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
 RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
 RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
@@ -255,76 +256,76 @@ RESULT: crowdsale.participationCaps('0xa44a08d3f6933c69212114bb66e2df1813651844'
 RESULT: crowdsale.participationCaps('0xa55a151eb00fded1634d27d1127b4be4627079ea')=0 0
 RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
-RESULT: TokensIssued 0 #44973 {"to":"0xacca534c9f62ab495bd986e002ddf0f054caae4f","tokens":"1e+26"}
-RESULT: TokensIssued 1 #44973 {"to":"0xadda9b762a00ff12711113bfdc36958b73d7f915","tokens":"1e+26"}
-RESULT: TokensIssued 2 #44973 {"to":"0xaeea63b5479b50f79583ec49dacdcf86ddeff392","tokens":"1e+26"}
-RESULT: TokensIssued 3 #44973 {"to":"0xaffa4d3a80add8ce4018540e056dacb649589394","tokens":"1e+26"}
-RESULT: TokensIssued 4 #44973 {"to":"0xb00bfde102270687324f9205b693859df64f8923","tokens":"1e+26"}
-RESULT: TokensIssued 5 #44973 {"to":"0xb11be1d4ef8e94d01cb2695092a79d139a8dad98","tokens":"1e+26"}
-RESULT: TokensIssued 6 #44973 {"to":"0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f","tokens":"1e+26"}
-RESULT: TokensIssued 7 #44973 {"to":"0xb33b7ecf5e47be3981c74d989d3af8b665b4b649","tokens":"1e+26"}
-RESULT: TokensIssued 8 #44973 {"to":"0xb44b43d59b738b088b690ae276c1e979aba8268d","tokens":"1e+26"}
-RESULT: TokensIssued 9 #44973 {"to":"0xb55b57d113b45481e31aaf03d6f4e5ad4ef325f8","tokens":"1e+26"}
-RESULT: TokensIssued 10 #44973 {"to":"0xb66bcb4e473de80e2c8a47ced10c22c705a5e602","tokens":"1e+26"}
-RESULT: TokensIssued 11 #44973 {"to":"0xb77bbbaa7c1649547ae61de4b80b91568c28351a","tokens":"1e+26"}
-RESULT: TokensIssued 12 #44973 {"to":"0xb88b728490b417e29b0784db30535db343830dba","tokens":"1e+26"}
-RESULT: TokensIssued 13 #44973 {"to":"0xb99b3d1f72edb05a0321db58eddcf83fd73c4ade","tokens":"1e+26"}
-RESULT: TokensIssued 14 #44973 {"to":"0xbaab56da883edbe5314b8005be410022c510ccae","tokens":"1e+26"}
-RESULT: TokensIssued 15 #44973 {"to":"0xbbbb9809de0456ce0e0cd660e6e4ceabef3f521c","tokens":"1e+26"}
-RESULT: TokensIssued 16 #44973 {"to":"0xbccb68dd0ac87ef290aef49870d155f076c87868","tokens":"1e+26"}
-RESULT: TokensIssued 17 #44973 {"to":"0xbddb726ee06906e104db210e6d0506f2b062e477","tokens":"1e+26"}
-RESULT: TokensIssued 18 #44973 {"to":"0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87","tokens":"1e+26"}
-RESULT: TokensIssued 19 #44973 {"to":"0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff","tokens":"1e+26"}
+RESULT: TokensIssued 0 #6714 {"to":"0xacca534c9f62ab495bd986e002ddf0f054caae4f","tokens":"1e+26"}
+RESULT: TokensIssued 1 #6714 {"to":"0xadda9b762a00ff12711113bfdc36958b73d7f915","tokens":"1e+26"}
+RESULT: TokensIssued 2 #6714 {"to":"0xaeea63b5479b50f79583ec49dacdcf86ddeff392","tokens":"1e+26"}
+RESULT: TokensIssued 3 #6714 {"to":"0xaffa4d3a80add8ce4018540e056dacb649589394","tokens":"1e+26"}
+RESULT: TokensIssued 4 #6714 {"to":"0xb00bfde102270687324f9205b693859df64f8923","tokens":"1e+26"}
+RESULT: TokensIssued 5 #6714 {"to":"0xb11be1d4ef8e94d01cb2695092a79d139a8dad98","tokens":"1e+26"}
+RESULT: TokensIssued 6 #6714 {"to":"0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f","tokens":"1e+26"}
+RESULT: TokensIssued 7 #6714 {"to":"0xb33b7ecf5e47be3981c74d989d3af8b665b4b649","tokens":"1e+26"}
+RESULT: TokensIssued 8 #6714 {"to":"0xb44b43d59b738b088b690ae276c1e979aba8268d","tokens":"1e+26"}
+RESULT: TokensIssued 9 #6714 {"to":"0xb55b57d113b45481e31aaf03d6f4e5ad4ef325f8","tokens":"1e+26"}
+RESULT: TokensIssued 10 #6714 {"to":"0xb66bcb4e473de80e2c8a47ced10c22c705a5e602","tokens":"1e+26"}
+RESULT: TokensIssued 11 #6714 {"to":"0xb77bbbaa7c1649547ae61de4b80b91568c28351a","tokens":"1e+26"}
+RESULT: TokensIssued 12 #6714 {"to":"0xb88b728490b417e29b0784db30535db343830dba","tokens":"1e+26"}
+RESULT: TokensIssued 13 #6714 {"to":"0xb99b3d1f72edb05a0321db58eddcf83fd73c4ade","tokens":"1e+26"}
+RESULT: TokensIssued 14 #6714 {"to":"0xbaab56da883edbe5314b8005be410022c510ccae","tokens":"1e+26"}
+RESULT: TokensIssued 15 #6714 {"to":"0xbbbb9809de0456ce0e0cd660e6e4ceabef3f521c","tokens":"1e+26"}
+RESULT: TokensIssued 16 #6714 {"to":"0xbccb68dd0ac87ef290aef49870d155f076c87868","tokens":"1e+26"}
+RESULT: TokensIssued 17 #6714 {"to":"0xbddb726ee06906e104db210e6d0506f2b062e477","tokens":"1e+26"}
+RESULT: TokensIssued 18 #6714 {"to":"0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87","tokens":"1e+26"}
+RESULT: TokensIssued 19 #6714 {"to":"0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff","tokens":"1e+26"}
 undefined
 > 
-RESULT: tokenContractAddress=0x0ff172c7a940bb6767bf006ff6a244871bf81877
-RESULT: token.owner=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
 RESULT: token.symbol=VIT
 RESULT: token.name=Vice
 RESULT: token.decimals=18
 RESULT: token.totalSupply=2000000000
 RESULT: token.mintingFinished=false
-RESULT: Mint 0 #44973 {"amount":"1e+26","to":"0xacca534c9f62ab495bd986e002ddf0f054caae4f"}
-RESULT: Mint 1 #44973 {"amount":"1e+26","to":"0xadda9b762a00ff12711113bfdc36958b73d7f915"}
-RESULT: Mint 2 #44973 {"amount":"1e+26","to":"0xaeea63b5479b50f79583ec49dacdcf86ddeff392"}
-RESULT: Mint 3 #44973 {"amount":"1e+26","to":"0xaffa4d3a80add8ce4018540e056dacb649589394"}
-RESULT: Mint 4 #44973 {"amount":"1e+26","to":"0xb00bfde102270687324f9205b693859df64f8923"}
-RESULT: Mint 5 #44973 {"amount":"1e+26","to":"0xb11be1d4ef8e94d01cb2695092a79d139a8dad98"}
-RESULT: Mint 6 #44973 {"amount":"1e+26","to":"0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f"}
-RESULT: Mint 7 #44973 {"amount":"1e+26","to":"0xb33b7ecf5e47be3981c74d989d3af8b665b4b649"}
-RESULT: Mint 8 #44973 {"amount":"1e+26","to":"0xb44b43d59b738b088b690ae276c1e979aba8268d"}
-RESULT: Mint 9 #44973 {"amount":"1e+26","to":"0xb55b57d113b45481e31aaf03d6f4e5ad4ef325f8"}
-RESULT: Mint 10 #44973 {"amount":"1e+26","to":"0xb66bcb4e473de80e2c8a47ced10c22c705a5e602"}
-RESULT: Mint 11 #44973 {"amount":"1e+26","to":"0xb77bbbaa7c1649547ae61de4b80b91568c28351a"}
-RESULT: Mint 12 #44973 {"amount":"1e+26","to":"0xb88b728490b417e29b0784db30535db343830dba"}
-RESULT: Mint 13 #44973 {"amount":"1e+26","to":"0xb99b3d1f72edb05a0321db58eddcf83fd73c4ade"}
-RESULT: Mint 14 #44973 {"amount":"1e+26","to":"0xbaab56da883edbe5314b8005be410022c510ccae"}
-RESULT: Mint 15 #44973 {"amount":"1e+26","to":"0xbbbb9809de0456ce0e0cd660e6e4ceabef3f521c"}
-RESULT: Mint 16 #44973 {"amount":"1e+26","to":"0xbccb68dd0ac87ef290aef49870d155f076c87868"}
-RESULT: Mint 17 #44973 {"amount":"1e+26","to":"0xbddb726ee06906e104db210e6d0506f2b062e477"}
-RESULT: Mint 18 #44973 {"amount":"1e+26","to":"0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87"}
-RESULT: Mint 19 #44973 {"amount":"1e+26","to":"0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff"}
-RESULT: Transfer 0 #44973: from=0x0000000000000000000000000000000000000000 to=0xacca534c9f62ab495bd986e002ddf0f054caae4f value=100000000
-RESULT: Transfer 1 #44973: from=0x0000000000000000000000000000000000000000 to=0xadda9b762a00ff12711113bfdc36958b73d7f915 value=100000000
-RESULT: Transfer 2 #44973: from=0x0000000000000000000000000000000000000000 to=0xaeea63b5479b50f79583ec49dacdcf86ddeff392 value=100000000
-RESULT: Transfer 3 #44973: from=0x0000000000000000000000000000000000000000 to=0xaffa4d3a80add8ce4018540e056dacb649589394 value=100000000
-RESULT: Transfer 4 #44973: from=0x0000000000000000000000000000000000000000 to=0xb00bfde102270687324f9205b693859df64f8923 value=100000000
-RESULT: Transfer 5 #44973: from=0x0000000000000000000000000000000000000000 to=0xb11be1d4ef8e94d01cb2695092a79d139a8dad98 value=100000000
-RESULT: Transfer 6 #44973: from=0x0000000000000000000000000000000000000000 to=0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f value=100000000
-RESULT: Transfer 7 #44973: from=0x0000000000000000000000000000000000000000 to=0xb33b7ecf5e47be3981c74d989d3af8b665b4b649 value=100000000
-RESULT: Transfer 8 #44973: from=0x0000000000000000000000000000000000000000 to=0xb44b43d59b738b088b690ae276c1e979aba8268d value=100000000
-RESULT: Transfer 9 #44973: from=0x0000000000000000000000000000000000000000 to=0xb55b57d113b45481e31aaf03d6f4e5ad4ef325f8 value=100000000
-RESULT: Transfer 10 #44973: from=0x0000000000000000000000000000000000000000 to=0xb66bcb4e473de80e2c8a47ced10c22c705a5e602 value=100000000
-RESULT: Transfer 11 #44973: from=0x0000000000000000000000000000000000000000 to=0xb77bbbaa7c1649547ae61de4b80b91568c28351a value=100000000
-RESULT: Transfer 12 #44973: from=0x0000000000000000000000000000000000000000 to=0xb88b728490b417e29b0784db30535db343830dba value=100000000
-RESULT: Transfer 13 #44973: from=0x0000000000000000000000000000000000000000 to=0xb99b3d1f72edb05a0321db58eddcf83fd73c4ade value=100000000
-RESULT: Transfer 14 #44973: from=0x0000000000000000000000000000000000000000 to=0xbaab56da883edbe5314b8005be410022c510ccae value=100000000
-RESULT: Transfer 15 #44973: from=0x0000000000000000000000000000000000000000 to=0xbbbb9809de0456ce0e0cd660e6e4ceabef3f521c value=100000000
-RESULT: Transfer 16 #44973: from=0x0000000000000000000000000000000000000000 to=0xbccb68dd0ac87ef290aef49870d155f076c87868 value=100000000
-RESULT: Transfer 17 #44973: from=0x0000000000000000000000000000000000000000 to=0xbddb726ee06906e104db210e6d0506f2b062e477 value=100000000
-RESULT: Transfer 18 #44973: from=0x0000000000000000000000000000000000000000 to=0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87 value=100000000
-RESULT: Transfer 19 #44973: from=0x0000000000000000000000000000000000000000 to=0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff value=100000000
+RESULT: Mint 0 #6714 {"amount":"1e+26","to":"0xacca534c9f62ab495bd986e002ddf0f054caae4f"}
+RESULT: Mint 1 #6714 {"amount":"1e+26","to":"0xadda9b762a00ff12711113bfdc36958b73d7f915"}
+RESULT: Mint 2 #6714 {"amount":"1e+26","to":"0xaeea63b5479b50f79583ec49dacdcf86ddeff392"}
+RESULT: Mint 3 #6714 {"amount":"1e+26","to":"0xaffa4d3a80add8ce4018540e056dacb649589394"}
+RESULT: Mint 4 #6714 {"amount":"1e+26","to":"0xb00bfde102270687324f9205b693859df64f8923"}
+RESULT: Mint 5 #6714 {"amount":"1e+26","to":"0xb11be1d4ef8e94d01cb2695092a79d139a8dad98"}
+RESULT: Mint 6 #6714 {"amount":"1e+26","to":"0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f"}
+RESULT: Mint 7 #6714 {"amount":"1e+26","to":"0xb33b7ecf5e47be3981c74d989d3af8b665b4b649"}
+RESULT: Mint 8 #6714 {"amount":"1e+26","to":"0xb44b43d59b738b088b690ae276c1e979aba8268d"}
+RESULT: Mint 9 #6714 {"amount":"1e+26","to":"0xb55b57d113b45481e31aaf03d6f4e5ad4ef325f8"}
+RESULT: Mint 10 #6714 {"amount":"1e+26","to":"0xb66bcb4e473de80e2c8a47ced10c22c705a5e602"}
+RESULT: Mint 11 #6714 {"amount":"1e+26","to":"0xb77bbbaa7c1649547ae61de4b80b91568c28351a"}
+RESULT: Mint 12 #6714 {"amount":"1e+26","to":"0xb88b728490b417e29b0784db30535db343830dba"}
+RESULT: Mint 13 #6714 {"amount":"1e+26","to":"0xb99b3d1f72edb05a0321db58eddcf83fd73c4ade"}
+RESULT: Mint 14 #6714 {"amount":"1e+26","to":"0xbaab56da883edbe5314b8005be410022c510ccae"}
+RESULT: Mint 15 #6714 {"amount":"1e+26","to":"0xbbbb9809de0456ce0e0cd660e6e4ceabef3f521c"}
+RESULT: Mint 16 #6714 {"amount":"1e+26","to":"0xbccb68dd0ac87ef290aef49870d155f076c87868"}
+RESULT: Mint 17 #6714 {"amount":"1e+26","to":"0xbddb726ee06906e104db210e6d0506f2b062e477"}
+RESULT: Mint 18 #6714 {"amount":"1e+26","to":"0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87"}
+RESULT: Mint 19 #6714 {"amount":"1e+26","to":"0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff"}
+RESULT: Transfer 0 #6714: from=0x0000000000000000000000000000000000000000 to=0xacca534c9f62ab495bd986e002ddf0f054caae4f value=100000000
+RESULT: Transfer 1 #6714: from=0x0000000000000000000000000000000000000000 to=0xadda9b762a00ff12711113bfdc36958b73d7f915 value=100000000
+RESULT: Transfer 2 #6714: from=0x0000000000000000000000000000000000000000 to=0xaeea63b5479b50f79583ec49dacdcf86ddeff392 value=100000000
+RESULT: Transfer 3 #6714: from=0x0000000000000000000000000000000000000000 to=0xaffa4d3a80add8ce4018540e056dacb649589394 value=100000000
+RESULT: Transfer 4 #6714: from=0x0000000000000000000000000000000000000000 to=0xb00bfde102270687324f9205b693859df64f8923 value=100000000
+RESULT: Transfer 5 #6714: from=0x0000000000000000000000000000000000000000 to=0xb11be1d4ef8e94d01cb2695092a79d139a8dad98 value=100000000
+RESULT: Transfer 6 #6714: from=0x0000000000000000000000000000000000000000 to=0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f value=100000000
+RESULT: Transfer 7 #6714: from=0x0000000000000000000000000000000000000000 to=0xb33b7ecf5e47be3981c74d989d3af8b665b4b649 value=100000000
+RESULT: Transfer 8 #6714: from=0x0000000000000000000000000000000000000000 to=0xb44b43d59b738b088b690ae276c1e979aba8268d value=100000000
+RESULT: Transfer 9 #6714: from=0x0000000000000000000000000000000000000000 to=0xb55b57d113b45481e31aaf03d6f4e5ad4ef325f8 value=100000000
+RESULT: Transfer 10 #6714: from=0x0000000000000000000000000000000000000000 to=0xb66bcb4e473de80e2c8a47ced10c22c705a5e602 value=100000000
+RESULT: Transfer 11 #6714: from=0x0000000000000000000000000000000000000000 to=0xb77bbbaa7c1649547ae61de4b80b91568c28351a value=100000000
+RESULT: Transfer 12 #6714: from=0x0000000000000000000000000000000000000000 to=0xb88b728490b417e29b0784db30535db343830dba value=100000000
+RESULT: Transfer 13 #6714: from=0x0000000000000000000000000000000000000000 to=0xb99b3d1f72edb05a0321db58eddcf83fd73c4ade value=100000000
+RESULT: Transfer 14 #6714: from=0x0000000000000000000000000000000000000000 to=0xbaab56da883edbe5314b8005be410022c510ccae value=100000000
+RESULT: Transfer 15 #6714: from=0x0000000000000000000000000000000000000000 to=0xbbbb9809de0456ce0e0cd660e6e4ceabef3f521c value=100000000
+RESULT: Transfer 16 #6714: from=0x0000000000000000000000000000000000000000 to=0xbccb68dd0ac87ef290aef49870d155f076c87868 value=100000000
+RESULT: Transfer 17 #6714: from=0x0000000000000000000000000000000000000000 to=0xbddb726ee06906e104db210e6d0506f2b062e477 value=100000000
+RESULT: Transfer 18 #6714: from=0x0000000000000000000000000000000000000000 to=0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87 value=100000000
+RESULT: Transfer 19 #6714: from=0x0000000000000000000000000000000000000000 to=0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff value=100000000
 undefined
 > 
 RESULT: 
@@ -352,8 +353,8 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003774006000000000           0.000000000000000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003774006000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003754552000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003754552000000000           0.000000000000000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
@@ -384,8 +385,8 @@ RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.00000000000000000
 RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
 RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
 RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
-RESULT: 32 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Crowdsale Contract
-RESULT: 33 0x0ff172c7a940bb6767bf006ff6a244871bf81877        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b        0.000000000000000000           0.000000000000000000 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                            2000000000.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -395,24 +396,25 @@ undefined
 RESULT: PASS Set Caps
 1
 > 
-RESULT: setCaps_1Tx status=0x1 Success gas=100000 gasUsed=88338 costETH=0.000088338 costUSD=0.07627897962 @ ETH/USD=863.49 gasPrice=1 gwei block=44982 txIx=0 txId=0x6da4fa8baa101d9357ea78243c0511197956c7405a5b43049cec8829f54aec00 @ 1518680471 Thu, 15 Feb 2018 07:41:11 UTC
+RESULT: setCaps_1Tx status=0x1 Success gas=100000 gasUsed=88338 costETH=0.000088338 costUSD=0.07627897962 @ ETH/USD=863.49 gasPrice=1 gwei block=6721 txIx=0 txId=0x49ca838086c1ffd9d4135bbc317ba0fffa79a7035ca74695a2ffe27a14e03bdd @ 1518934646 Sun, 18 Feb 2018 06:17:26 UTC
 undefined
 > 
-RESULT: crowdsaleContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
-RESULT: crowdsale.vitToken=0x0ff172c7a940bb6767bf006ff6a244871bf81877
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
 RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
 RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
 RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
 RESULT: crowdsale.vitPerWei=18052 1.8052e-14
 RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
-RESULT: crowdsale.startTime=1518680480 Thu, 15 Feb 2018 07:41:20 UTC
-RESULT: crowdsale.endTime=1518680540 Thu, 15 Feb 2018 07:42:20 UTC
-RESULT: crowdsale.refundEndTime=1518680570 Thu, 15 Feb 2018 07:42:50 UTC
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
 RESULT: crowdsale.totalClaimableTokens=0 0
 RESULT: crowdsale.finalizedRefund=false
 RESULT: crowdsale.tokensSold=0 0
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
 RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
 RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
@@ -436,8 +438,8 @@ RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9'
 RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 undefined
 > 
-RESULT: tokenContractAddress=0x0ff172c7a940bb6767bf006ff6a244871bf81877
-RESULT: token.owner=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
 RESULT: token.symbol=VIT
 RESULT: token.name=Vice
@@ -451,8 +453,8 @@ undefined
 > 
 > 
 > 
-RESULT: Waiting until 'startTime' at 1518680480+0s=Thu, 15 Feb 2018 18:41:21 AEDT now=Thu, 15 Feb 2018 18:41:15 AEDT
-RESULT: Waited until 'startTime' at at 1518680480+0s=Thu, 15 Feb 2018 18:41:21 AEDT now=Thu, 15 Feb 2018 18:41:21 AEDT
+RESULT: Waiting until 'startTime' at 1518934658+0s=Sun, 18 Feb 2018 17:17:39 AEDT now=Sun, 18 Feb 2018 17:17:30 AEDT
+RESULT: Waited until 'startTime' at at 1518934658+0s=Sun, 18 Feb 2018 17:17:39 AEDT now=Sun, 18 Feb 2018 17:17:39 AEDT
 RESULT: 
 undefined
 > 
@@ -476,8 +478,8 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003957372000000000           0.000000000000000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003774006000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003937918000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003754552000000000           0.000000000000000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
@@ -508,8 +510,8 @@ RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.00000000000000000
 RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
 RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
 RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
-RESULT: 32 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.500000000000000000        9026.000000000000000000 Crowdsale Contract
-RESULT: 33 0x0ff172c7a940bb6767bf006ff6a244871bf81877        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b        0.500000000000000000        9026.000000000000000000 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                            2000009026.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -522,27 +524,28 @@ RESULT: PASS Send Contribution #0 - During restricted participation period - ac5
 RESULT: PASS Send Contribution #0 - During restricted participation period - ac6 0.5 ETH - Expecting failure - no cap
 1
 > 
-RESULT: sendContribution0_1Tx status=0x1 Success gas=400000 gasUsed=160297 costETH=0.000160297 costUSD=0.13841485653 @ ETH/USD=863.49 gasPrice=1 gwei block=44994 txIx=0 txId=0x53d56f87609a3321be8412bcb6ac3d800bef61bfb6620987035f94951b7afacf @ 1518680483 Thu, 15 Feb 2018 07:41:23 UTC
+RESULT: sendContribution0_1Tx status=0x1 Success gas=400000 gasUsed=160297 costETH=0.000160297 costUSD=0.13841485653 @ ETH/USD=863.49 gasPrice=1 gwei block=6736 txIx=1 txId=0xf78d8aed12173fbeac7af93b0fa7a5266c3b4137f68faa3df4dc2b5a319d09be @ 1518934661 Sun, 18 Feb 2018 06:17:41 UTC
 undefined
 > 
-RESULT: sendContribution0_2Tx status=0x0 Failure gas=400000 gasUsed=23069 costETH=0.000023069 costUSD=0.01991985081 @ ETH/USD=863.49 gasPrice=1 gwei block=44994 txIx=1 txId=0x7c953ab3972e5a5f95e8c5e5073b9a4ff03b3358a936c8eef78e3b1ee5c8c83b @ 1518680483 Thu, 15 Feb 2018 07:41:23 UTC
+RESULT: sendContribution0_2Tx status=0x0 Failure gas=400000 gasUsed=23069 costETH=0.000023069 costUSD=0.01991985081 @ ETH/USD=863.49 gasPrice=1 gwei block=6736 txIx=0 txId=0xbf2913a6155f15676d16119537765d101dab5a62fc600162a7b0a8b1675a84ee @ 1518934661 Sun, 18 Feb 2018 06:17:41 UTC
 undefined
 > 
-RESULT: crowdsaleContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
-RESULT: crowdsale.vitToken=0x0ff172c7a940bb6767bf006ff6a244871bf81877
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
 RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
 RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
 RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
 RESULT: crowdsale.vitPerWei=18052 1.8052e-14
 RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
-RESULT: crowdsale.startTime=1518680480 Thu, 15 Feb 2018 07:41:20 UTC
-RESULT: crowdsale.endTime=1518680540 Thu, 15 Feb 2018 07:42:20 UTC
-RESULT: crowdsale.refundEndTime=1518680570 Thu, 15 Feb 2018 07:42:50 UTC
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
 RESULT: crowdsale.totalClaimableTokens=9.026e+21 9026
 RESULT: crowdsale.finalizedRefund=false
 RESULT: crowdsale.tokensSold=9.026e+21 9026
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
 RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
 RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
@@ -564,19 +567,19 @@ RESULT: crowdsale.participationCaps('0xa44a08d3f6933c69212114bb66e2df1813651844'
 RESULT: crowdsale.participationCaps('0xa55a151eb00fded1634d27d1127b4be4627079ea')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
-RESULT: TokensIssued 0 #44994 {"to":"0x3529089fbacf865e6771ddb8a76ac997963a5393","tokens":"9.026e+21"}
+RESULT: TokensIssued 0 #6736 {"to":"0x0a91add9e3e97057980da7826043aab2a2d4c35b","tokens":"9.026e+21"}
 undefined
 > 
-RESULT: tokenContractAddress=0x0ff172c7a940bb6767bf006ff6a244871bf81877
-RESULT: token.owner=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
 RESULT: token.symbol=VIT
 RESULT: token.name=Vice
 RESULT: token.decimals=18
 RESULT: token.totalSupply=2000009026
 RESULT: token.mintingFinished=false
-RESULT: Mint 0 #44994 {"amount":"9.026e+21","to":"0x3529089fbacf865e6771ddb8a76ac997963a5393"}
-RESULT: Transfer 0 #44994: from=0x0000000000000000000000000000000000000000 to=0x3529089fbacf865e6771ddb8a76ac997963a5393 value=9026
+RESULT: Mint 0 #6736 {"amount":"9.026e+21","to":"0x0a91add9e3e97057980da7826043aab2a2d4c35b"}
+RESULT: Transfer 0 #6736: from=0x0000000000000000000000000000000000000000 to=0x0a91add9e3e97057980da7826043aab2a2d4c35b value=9026
 undefined
 > 
 RESULT: 
@@ -584,8 +587,8 @@ undefined
 > 
 > 
 > 
-RESULT: Waiting until 'startTime + RESTRICTED_PERIOD_DURATION' at 1518680480+30s=Thu, 15 Feb 2018 18:41:51 AEDT now=Thu, 15 Feb 2018 18:41:27 AEDT
-RESULT: Waited until 'startTime + RESTRICTED_PERIOD_DURATION' at at 1518680480+30s=Thu, 15 Feb 2018 18:41:51 AEDT now=Thu, 15 Feb 2018 18:41:51 AEDT
+RESULT: Waiting until 'startTime + RESTRICTED_PERIOD_DURATION' at 1518934658+30s=Sun, 18 Feb 2018 17:18:09 AEDT now=Sun, 18 Feb 2018 17:17:45 AEDT
+RESULT: Waited until 'startTime + RESTRICTED_PERIOD_DURATION' at at 1518934658+30s=Sun, 18 Feb 2018 17:18:09 AEDT now=Sun, 18 Feb 2018 17:18:09 AEDT
 RESULT: 
 undefined
 > 
@@ -612,13 +615,13 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004149540000000000           0.000000000000000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003774006000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004122508000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003754552000000000           0.000000000000000000 Account #1 - Contract Owner
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea   -60000.500230092000000000           0.000000000000000000 Account #5
-RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -50790.548228756868158652           0.000000000000000000 Account #6
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea   -40000.500230092000000000           0.000000000000000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -40000.000137864000000000           0.000000000000000000 Account #6
 RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
 RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
 RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
@@ -644,78 +647,79 @@ RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.00000000000000000
 RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
 RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
 RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
-RESULT: 32 0x3529089fbacf865e6771ddb8a76ac997963a5393   110791.048083314868158652  2000000000.000000000000000000 Crowdsale Contract
-RESULT: 33 0x0ff172c7a940bb6767bf006ff6a244871bf81877        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b    80000.500000000000000000  1444169026.000000000000000000 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:                                                                            4000000000.000000000000000000 Total Token Balances
+RESULT:                                                                            3444169026.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT: 
 undefined
 > 
-RESULT: PASS Send Contribution #1 - After restricted participation period - ac5 60,000 ETH
+RESULT: PASS Send Contribution #1 - After restricted participation period - ac5 40,000 ETH
 1
 > 
-RESULT: PASS Send Contribution #1 - After restricted participation period - ac6 60,000 ETH
+RESULT: PASS Send Contribution #1 - After restricted participation period - ac6 40,000 ETH
 1
 > 
-RESULT: sendContribution1_1Tx status=0x1 Success gas=400000 gasUsed=69795 costETH=0.000069795 costUSD=0.06026728455 @ ETH/USD=863.49 gasPrice=1 gwei block=45024 txIx=0 txId=0x91a632d0256ee2327c6819d2b41baa9578328f316171f447e5c14d1ba7a3e996 @ 1518680513 Thu, 15 Feb 2018 07:41:53 UTC
+RESULT: sendContribution1_1Tx status=0x1 Success gas=400000 gasUsed=69795 costETH=0.000069795 costUSD=0.06026728455 @ ETH/USD=863.49 gasPrice=1 gwei block=6766 txIx=0 txId=0xc2efd4ac4be255f534b5f7eba731bf7daa9775d474d4ab16724f1007daaf4e11 @ 1518934691 Sun, 18 Feb 2018 06:18:11 UTC
 undefined
 > 
-RESULT: sendContribution1_2Tx status=0x1 Success gas=400000 gasUsed=122373 costETH=0.000122373 costUSD=0.10566786177 @ ETH/USD=863.49 gasPrice=1 gwei block=45026 txIx=0 txId=0x3c2e27b37dd4bbb991736529d4781193bb9fdebd82868303337ff8c272d93845 @ 1518680515 Thu, 15 Feb 2018 07:41:55 UTC
+RESULT: sendContribution1_2Tx status=0x1 Success gas=400000 gasUsed=114795 costETH=0.000114795 costUSD=0.09912433455 @ ETH/USD=863.49 gasPrice=1 gwei block=6768 txIx=0 txId=0x697faae778a79a813cc007ff795c87ca820662ce9875647ec998e92923d3f976 @ 1518934693 Sun, 18 Feb 2018 06:18:13 UTC
 undefined
 > 
-RESULT: crowdsaleContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
-RESULT: crowdsale.vitToken=0x0ff172c7a940bb6767bf006ff6a244871bf81877
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
 RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
 RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
 RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
 RESULT: crowdsale.vitPerWei=18052 1.8052e-14
 RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
-RESULT: crowdsale.startTime=1518680480 Thu, 15 Feb 2018 07:41:20 UTC
-RESULT: crowdsale.endTime=1518680540 Thu, 15 Feb 2018 07:42:20 UTC
-RESULT: crowdsale.refundEndTime=1518680570 Thu, 15 Feb 2018 07:42:50 UTC
-RESULT: crowdsale.totalClaimableTokens=2e+27 2000000000
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
+RESULT: crowdsale.totalClaimableTokens=1.444169026e+27 1444169026
 RESULT: crowdsale.finalizedRefund=false
-RESULT: crowdsale.tokensSold=2e+27 2000000000
+RESULT: crowdsale.tokensSold=1.444169026e+27 1444169026
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
 RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
 RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.refundableEther('0xa55a151eb00fded1634d27d1127b4be4627079ea')=6.00005e+22 60000.5
-RESULT: crowdsale.refundableEther('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=5.0790548083314868158652e+22 50790.548083314868158652
+RESULT: crowdsale.refundableEther('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.00005e+22 40000.5
+RESULT: crowdsale.refundableEther('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=4e+22 40000
 RESULT: crowdsale.refundableEther('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.claimableTokens('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.claimableTokens('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.claimableTokens('0xa55a151eb00fded1634d27d1127b4be4627079ea')=1.083129026e+27 1083129026
-RESULT: crowdsale.claimableTokens('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=9.16870974e+26 916870974
+RESULT: crowdsale.claimableTokens('0xa55a151eb00fded1634d27d1127b4be4627079ea')=7.22089026e+26 722089026
+RESULT: crowdsale.claimableTokens('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=7.2208e+26 722080000
 RESULT: crowdsale.claimableTokens('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationHistory('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.participationHistory('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=6.00005e+22 60000.5
-RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=5.0790548083314868158652e+22 50790.548083314868158652
+RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.00005e+22 40000.5
+RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=4e+22 40000
 RESULT: crowdsale.participationHistory('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationCaps('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa44a08d3f6933c69212114bb66e2df1813651844')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa55a151eb00fded1634d27d1127b4be4627079ea')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
-RESULT: TokensIssued 0 #45024 {"to":"0x3529089fbacf865e6771ddb8a76ac997963a5393","tokens":"1.08312e+27"}
-RESULT: TokensIssued 1 #45026 {"to":"0x3529089fbacf865e6771ddb8a76ac997963a5393","tokens":"9.16870974e+26"}
+RESULT: TokensIssued 0 #6766 {"to":"0x0a91add9e3e97057980da7826043aab2a2d4c35b","tokens":"7.2208e+26"}
+RESULT: TokensIssued 1 #6768 {"to":"0x0a91add9e3e97057980da7826043aab2a2d4c35b","tokens":"7.2208e+26"}
 undefined
 > 
-RESULT: tokenContractAddress=0x0ff172c7a940bb6767bf006ff6a244871bf81877
-RESULT: token.owner=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
 RESULT: token.symbol=VIT
 RESULT: token.name=Vice
 RESULT: token.decimals=18
-RESULT: token.totalSupply=4000000000
+RESULT: token.totalSupply=3444169026
 RESULT: token.mintingFinished=false
-RESULT: Mint 0 #45024 {"amount":"1.08312e+27","to":"0x3529089fbacf865e6771ddb8a76ac997963a5393"}
-RESULT: Mint 1 #45026 {"amount":"9.16870974e+26","to":"0x3529089fbacf865e6771ddb8a76ac997963a5393"}
-RESULT: Transfer 0 #45024: from=0x0000000000000000000000000000000000000000 to=0x3529089fbacf865e6771ddb8a76ac997963a5393 value=1083120000
-RESULT: Transfer 1 #45026: from=0x0000000000000000000000000000000000000000 to=0x3529089fbacf865e6771ddb8a76ac997963a5393 value=916870974
+RESULT: Mint 0 #6766 {"amount":"7.2208e+26","to":"0x0a91add9e3e97057980da7826043aab2a2d4c35b"}
+RESULT: Mint 1 #6768 {"amount":"7.2208e+26","to":"0x0a91add9e3e97057980da7826043aab2a2d4c35b"}
+RESULT: Transfer 0 #6766: from=0x0000000000000000000000000000000000000000 to=0x0a91add9e3e97057980da7826043aab2a2d4c35b value=722080000
+RESULT: Transfer 1 #6768: from=0x0000000000000000000000000000000000000000 to=0x0a91add9e3e97057980da7826043aab2a2d4c35b value=722080000
 undefined
 > 
 RESULT: 
@@ -723,8 +727,8 @@ undefined
 > 
 > 
 > 
-RESULT: Waiting until 'endTime' at 1518680540+0s=Thu, 15 Feb 2018 18:42:21 AEDT now=Thu, 15 Feb 2018 18:42:01 AEDT
-RESULT: Waited until 'endTime' at at 1518680540+0s=Thu, 15 Feb 2018 18:42:21 AEDT now=Thu, 15 Feb 2018 18:42:21 AEDT
+RESULT: Waiting until 'endTime' at 1518934718+0s=Sun, 18 Feb 2018 17:18:39 AEDT now=Sun, 18 Feb 2018 17:18:17 AEDT
+RESULT: Waited until 'endTime' at at 1518934718+0s=Sun, 18 Feb 2018 17:18:39 AEDT now=Sun, 18 Feb 2018 17:18:39 AEDT
 RESULT: 
 undefined
 > 
@@ -746,13 +750,13 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004196611000000000           0.000000000000000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003821077000000000           0.000000000000000000 Account #1 - Contract Owner
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004204229000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003836273000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000   555830974.000000000000000000 Account #2 - Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea   -60000.500230092000000000           0.000000000000000000 Account #5
-RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -50790.548228756868158652           0.000000000000000000 Account #6
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea   -40000.500230092000000000           0.000000000000000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -40000.000137864000000000           0.000000000000000000 Account #6
 RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
 RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
 RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
@@ -778,8 +782,8 @@ RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.00000000000000000
 RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
 RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
 RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
-RESULT: 32 0x3529089fbacf865e6771ddb8a76ac997963a5393   110791.048083314868158652  2000000000.000000000000000000 Crowdsale Contract
-RESULT: 33 0x0ff172c7a940bb6767bf006ff6a244871bf81877        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b    80000.500000000000000000  1444169026.000000000000000000 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                            4000000000.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -789,57 +793,61 @@ undefined
 RESULT: PASS Finalise
 1
 > 
-RESULT: finalise_1Tx status=0x1 Success gas=100000 gasUsed=47071 costETH=0.000047071 costUSD=0.04064533779 @ ETH/USD=863.49 gasPrice=1 gwei block=45054 txIx=0 txId=0x4b7f1da965358b721c2ab43cab5a855bdbbd889237a29033f6bad1556359d344 @ 1518680543 Thu, 15 Feb 2018 07:42:23 UTC
+RESULT: finalise_1Tx status=0x1 Success gas=100000 gasUsed=81721 costETH=0.000081721 costUSD=0.07056526629 @ ETH/USD=863.49 gasPrice=1 gwei block=6796 txIx=0 txId=0xd2d0ce576b2d0f70a5e1f2bb627b6bde23e77ce5e5b504637592fb5400a4f9a2 @ 1518934721 Sun, 18 Feb 2018 06:18:41 UTC
 undefined
 > 
-RESULT: crowdsaleContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
-RESULT: crowdsale.vitToken=0x0ff172c7a940bb6767bf006ff6a244871bf81877
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
 RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
 RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
 RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
 RESULT: crowdsale.vitPerWei=18052 1.8052e-14
 RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
-RESULT: crowdsale.startTime=1518680480 Thu, 15 Feb 2018 07:41:20 UTC
-RESULT: crowdsale.endTime=1518680540 Thu, 15 Feb 2018 07:42:20 UTC
-RESULT: crowdsale.refundEndTime=1518680570 Thu, 15 Feb 2018 07:42:50 UTC
-RESULT: crowdsale.totalClaimableTokens=2e+27 2000000000
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
+RESULT: crowdsale.totalClaimableTokens=1.444169026e+27 1444169026
 RESULT: crowdsale.finalizedRefund=false
-RESULT: crowdsale.tokensSold=2e+27 2000000000
+RESULT: crowdsale.tokensSold=1.444169026e+27 1444169026
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
 RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
 RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.refundableEther('0xa55a151eb00fded1634d27d1127b4be4627079ea')=6.00005e+22 60000.5
-RESULT: crowdsale.refundableEther('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=5.0790548083314868158652e+22 50790.548083314868158652
+RESULT: crowdsale.refundableEther('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.00005e+22 40000.5
+RESULT: crowdsale.refundableEther('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=4e+22 40000
 RESULT: crowdsale.refundableEther('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.claimableTokens('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.claimableTokens('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.claimableTokens('0xa55a151eb00fded1634d27d1127b4be4627079ea')=1.083129026e+27 1083129026
-RESULT: crowdsale.claimableTokens('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=9.16870974e+26 916870974
+RESULT: crowdsale.claimableTokens('0xa55a151eb00fded1634d27d1127b4be4627079ea')=7.22089026e+26 722089026
+RESULT: crowdsale.claimableTokens('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=7.2208e+26 722080000
 RESULT: crowdsale.claimableTokens('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationHistory('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.participationHistory('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=6.00005e+22 60000.5
-RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=5.0790548083314868158652e+22 50790.548083314868158652
+RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.00005e+22 40000.5
+RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=4e+22 40000
 RESULT: crowdsale.participationHistory('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationCaps('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa44a08d3f6933c69212114bb66e2df1813651844')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa55a151eb00fded1634d27d1127b4be4627079ea')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
-RESULT: Finalized 0 #45054 {}
+RESULT: TokensIssued 0 #6796 {"to":"0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976","tokens":"5.55830974e+26"}
+RESULT: Finalized 0 #6796 {}
 undefined
 > 
-RESULT: tokenContractAddress=0x0ff172c7a940bb6767bf006ff6a244871bf81877
-RESULT: token.owner=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
 RESULT: token.symbol=VIT
 RESULT: token.name=Vice
 RESULT: token.decimals=18
 RESULT: token.totalSupply=4000000000
 RESULT: token.mintingFinished=true
-RESULT: MintFinished 0 #45054 {}
+RESULT: Mint 0 #6796 {"amount":"5.55830974e+26","to":"0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976"}
+RESULT: MintFinished 0 #6796 {}
+RESULT: Transfer 0 #6796: from=0x0000000000000000000000000000000000000000 to=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976 value=555830974
 undefined
 > 
 RESULT: 
@@ -865,13 +873,13 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004327807000000000           0.000000000000000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003821077000000000           0.000000000000000000 Account #1 - Contract Owner
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976    50790.603478838909816086           0.000000000000000000 Account #2 - Wallet
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004336064000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003836273000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976    40000.055395524041657434   555830974.000000000000000000 Account #2 - Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea   -60000.500310689000000000        1000.000000000000000000 Account #5
-RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -50790.548279355868158652   916870974.000000000000000000 Account #6
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea   -40000.500310902000000000        1000.000000000000000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -40000.000188889000000000   722080000.000000000000000000 Account #6
 RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
 RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
 RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
@@ -897,8 +905,8 @@ RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.00000000000000000
 RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
 RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
 RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
-RESULT: 32 0x3529089fbacf865e6771ddb8a76ac997963a5393    60000.444604475958342566  1083128026.000000000000000000 Crowdsale Contract
-RESULT: 33 0x0ff172c7a940bb6767bf006ff6a244871bf81877        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b    40000.444604475958342566   722088026.000000000000000000 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                            4000000000.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -911,62 +919,63 @@ RESULT: PASS Claim Tokens - ac5 claim 1,000
 RESULT: PASS Claim Tokens - ac6 claimAll
 1
 > 
-RESULT: claimTokens_1Tx status=0x1 Success gas=100000 gasUsed=80597 costETH=0.000080597 costUSD=0.06959470353 @ ETH/USD=863.49 gasPrice=1 gwei block=45060 txIx=0 txId=0xa53bbbfb3c1e361978d940f0cd2d6b75247b25b9b379e038cf48df127c9a5b14 @ 1518680549 Thu, 15 Feb 2018 07:42:29 UTC
+RESULT: claimTokens_1Tx status=0x1 Success gas=100000 gasUsed=80810 costETH=0.00008081 costUSD=0.0697786269 @ ETH/USD=863.49 gasPrice=1 gwei block=6802 txIx=0 txId=0xe326053632cf3a2bb09f303a00085b6b39bdd37702781938fe6cbd66da5d15ae @ 1518934727 Sun, 18 Feb 2018 06:18:47 UTC
 undefined
 > 
-RESULT: claimTokens_2Tx status=0x1 Success gas=100000 gasUsed=50599 costETH=0.000050599 costUSD=0.04369173051 @ ETH/USD=863.49 gasPrice=1 gwei block=45060 txIx=1 txId=0x6c9e703460cf5d5643865ed1fc2324ee7e55fdfad3ec83c31e6a3eadd72281a6 @ 1518680549 Thu, 15 Feb 2018 07:42:29 UTC
+RESULT: claimTokens_2Tx status=0x1 Success gas=100000 gasUsed=51025 costETH=0.000051025 costUSD=0.04405957725 @ ETH/USD=863.49 gasPrice=1 gwei block=6802 txIx=1 txId=0x9bd074e766a6ae5f79410bee69ba92b2a9c9be97b7891d2fa0f726fcacdb8eff @ 1518934727 Sun, 18 Feb 2018 06:18:47 UTC
 undefined
 > 
-RESULT: crowdsaleContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
-RESULT: crowdsale.vitToken=0x0ff172c7a940bb6767bf006ff6a244871bf81877
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
 RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
 RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
 RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
 RESULT: crowdsale.vitPerWei=18052 1.8052e-14
 RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
-RESULT: crowdsale.startTime=1518680480 Thu, 15 Feb 2018 07:41:20 UTC
-RESULT: crowdsale.endTime=1518680540 Thu, 15 Feb 2018 07:42:20 UTC
-RESULT: crowdsale.refundEndTime=1518680570 Thu, 15 Feb 2018 07:42:50 UTC
-RESULT: crowdsale.totalClaimableTokens=1.083128026e+27 1083128026
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
+RESULT: crowdsale.totalClaimableTokens=7.22088026e+26 722088026
 RESULT: crowdsale.finalizedRefund=false
-RESULT: crowdsale.tokensSold=2e+27 2000000000
+RESULT: crowdsale.tokensSold=1.444169026e+27 1444169026
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
 RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
 RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.refundableEther('0xa55a151eb00fded1634d27d1127b4be4627079ea')=6.0000444604475958342566e+22 60000.444604475958342566
+RESULT: crowdsale.refundableEther('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.0000444604475958342566e+22 40000.444604475958342566
 RESULT: crowdsale.refundableEther('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.refundableEther('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.claimableTokens('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.claimableTokens('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.claimableTokens('0xa55a151eb00fded1634d27d1127b4be4627079ea')=1.083128026e+27 1083128026
+RESULT: crowdsale.claimableTokens('0xa55a151eb00fded1634d27d1127b4be4627079ea')=7.22088026e+26 722088026
 RESULT: crowdsale.claimableTokens('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.claimableTokens('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationHistory('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.participationHistory('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=6.00005e+22 60000.5
-RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=5.0790548083314868158652e+22 50790.548083314868158652
+RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.00005e+22 40000.5
+RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=4e+22 40000
 RESULT: crowdsale.participationHistory('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationCaps('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa44a08d3f6933c69212114bb66e2df1813651844')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa55a151eb00fded1634d27d1127b4be4627079ea')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
-RESULT: TokensClaimed 0 #45060 {"from":"0xa55a151eb00fded1634d27d1127b4be4627079ea","tokens":"1e+21"}
-RESULT: TokensClaimed 1 #45060 {"from":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","tokens":"9.16870974e+26"}
+RESULT: TokensClaimed 0 #6802 {"from":"0xa55a151eb00fded1634d27d1127b4be4627079ea","tokens":"1e+21"}
+RESULT: TokensClaimed 1 #6802 {"from":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","tokens":"7.2208e+26"}
 undefined
 > 
-RESULT: tokenContractAddress=0x0ff172c7a940bb6767bf006ff6a244871bf81877
-RESULT: token.owner=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
 RESULT: token.symbol=VIT
 RESULT: token.name=Vice
 RESULT: token.decimals=18
 RESULT: token.totalSupply=4000000000
 RESULT: token.mintingFinished=true
-RESULT: Transfer 0 #45060: from=0x3529089fbacf865e6771ddb8a76ac997963a5393 to=0xa55a151eb00fded1634d27d1127b4be4627079ea value=1000
-RESULT: Transfer 1 #45060: from=0x3529089fbacf865e6771ddb8a76ac997963a5393 to=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 value=916870974
+RESULT: Transfer 0 #6802: from=0x0a91add9e3e97057980da7826043aab2a2d4c35b to=0xa55a151eb00fded1634d27d1127b4be4627079ea value=1000
+RESULT: Transfer 1 #6802: from=0x0a91add9e3e97057980da7826043aab2a2d4c35b to=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 value=722080000
 undefined
 > 
 RESULT: 
@@ -990,13 +999,13 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004408528000000000           0.000000000000000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003821077000000000           0.000000000000000000 Account #1 - Contract Owner
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976    50790.603478838909816086    18051999.999999999999999976 Account #2 - Wallet
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004401998000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003836273000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976    40000.055395524041657434   573882973.999999999999999964 Account #2 - Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea   -59000.500391410000000000        1000.000000000000000000 Account #5
-RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -50790.548279355868158652   916870974.000000000000000000 Account #6
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea   -39000.500376836000000000        1000.000000000000000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -40000.000188889000000000   722080000.000000000000000000 Account #6
 RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
 RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
 RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
@@ -1022,8 +1031,8 @@ RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.00000000000000000
 RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
 RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
 RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
-RESULT: 32 0x3529089fbacf865e6771ddb8a76ac997963a5393    59000.444604475958342566  1065076026.000000000000000024 Crowdsale Contract
-RESULT: 33 0x0ff172c7a940bb6767bf006ff6a244871bf81877        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b    39000.444604475958342566   704036026.000000000000000036 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                            4000000000.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -1033,57 +1042,58 @@ undefined
 RESULT: PASS Refund Ethers #1 - ac5 refund 1,000 ETH
 1
 > 
-RESULT: refundEthers0_1Tx status=0x1 Success gas=100000 gasUsed=80721 costETH=0.000080721 costUSD=0.06970177629 @ ETH/USD=863.49 gasPrice=1 gwei block=45066 txIx=0 txId=0x8070e68a08caedeeb57da7b3bd34a036d7dba34bc0861e5425934149718a1387 @ 1518680555 Thu, 15 Feb 2018 07:42:35 UTC
+RESULT: refundEthers0_1Tx status=0x1 Success gas=100000 gasUsed=65934 costETH=0.000065934 costUSD=0.05693334966 @ ETH/USD=863.49 gasPrice=1 gwei block=6808 txIx=0 txId=0x83f05866e682c9c594e94828faa4e0e728866fa9b4ae3516be0f355512273d14 @ 1518934733 Sun, 18 Feb 2018 06:18:53 UTC
 undefined
 > 
-RESULT: crowdsaleContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
-RESULT: crowdsale.vitToken=0x0ff172c7a940bb6767bf006ff6a244871bf81877
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
 RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
 RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
 RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
 RESULT: crowdsale.vitPerWei=18052 1.8052e-14
 RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
-RESULT: crowdsale.startTime=1518680480 Thu, 15 Feb 2018 07:41:20 UTC
-RESULT: crowdsale.endTime=1518680540 Thu, 15 Feb 2018 07:42:20 UTC
-RESULT: crowdsale.refundEndTime=1518680570 Thu, 15 Feb 2018 07:42:50 UTC
-RESULT: crowdsale.totalClaimableTokens=1.065076026000000000000000024e+27 1065076026.000000000000000024
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
+RESULT: crowdsale.totalClaimableTokens=7.04036026000000000000000036e+26 704036026.000000000000000036
 RESULT: crowdsale.finalizedRefund=false
-RESULT: crowdsale.tokensSold=2e+27 2000000000
+RESULT: crowdsale.tokensSold=1.444169026e+27 1444169026
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
 RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
 RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.refundableEther('0xa55a151eb00fded1634d27d1127b4be4627079ea')=5.9000444604475958342566e+22 59000.444604475958342566
+RESULT: crowdsale.refundableEther('0xa55a151eb00fded1634d27d1127b4be4627079ea')=3.9000444604475958342566e+22 39000.444604475958342566
 RESULT: crowdsale.refundableEther('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.refundableEther('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.claimableTokens('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.claimableTokens('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.claimableTokens('0xa55a151eb00fded1634d27d1127b4be4627079ea')=1.065076026000000000000000024e+27 1065076026.000000000000000024
+RESULT: crowdsale.claimableTokens('0xa55a151eb00fded1634d27d1127b4be4627079ea')=7.04036026000000000000000036e+26 704036026.000000000000000036
 RESULT: crowdsale.claimableTokens('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.claimableTokens('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationHistory('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.participationHistory('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=6.00005e+22 60000.5
-RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=5.0790548083314868158652e+22 50790.548083314868158652
+RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.00005e+22 40000.5
+RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=4e+22 40000
 RESULT: crowdsale.participationHistory('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationCaps('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa44a08d3f6933c69212114bb66e2df1813651844')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa55a151eb00fded1634d27d1127b4be4627079ea')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
-RESULT: EtherRefunded 0 #45066 {"from":"0xa55a151eb00fded1634d27d1127b4be4627079ea","weiAmount":"1e+21"}
+RESULT: EtherRefunded 0 #6808 {"from":"0xa55a151eb00fded1634d27d1127b4be4627079ea","weiAmount":"1e+21"}
 undefined
 > 
-RESULT: tokenContractAddress=0x0ff172c7a940bb6767bf006ff6a244871bf81877
-RESULT: token.owner=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
 RESULT: token.symbol=VIT
 RESULT: token.name=Vice
 RESULT: token.decimals=18
 RESULT: token.totalSupply=4000000000
 RESULT: token.mintingFinished=true
-RESULT: Transfer 0 #45066: from=0x3529089fbacf865e6771ddb8a76ac997963a5393 to=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976 value=18051999.999999999999999976
+RESULT: Transfer 0 #6808: from=0x0a91add9e3e97057980da7826043aab2a2d4c35b to=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976 value=18051999.999999999999999964
 undefined
 > 
 RESULT: 
@@ -1107,13 +1117,13 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004441511000000000           0.000000000000000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003821077000000000           0.000000000000000000 Account #1 - Contract Owner
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976    50790.603478838909816086  1083128026.000000000000000000 Account #2 - Wallet
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004435194000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003836273000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976    40000.055395524041657434  1277919000.000000000000000000 Account #2 - Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.055819917041657434        1000.000000000000000000 Account #5
-RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -50790.548279355868158652   916870974.000000000000000000 Account #6
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.055805556041657434        1000.000000000000000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -40000.000188889000000000   722080000.000000000000000000 Account #6
 RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
 RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
 RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
@@ -1139,8 +1149,8 @@ RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.00000000000000000
 RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
 RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
 RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
-RESULT: 32 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Crowdsale Contract
-RESULT: 33 0x0ff172c7a940bb6767bf006ff6a244871bf81877        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b        0.000000000000000000           0.000000000000000000 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                            4000000000.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -1150,24 +1160,25 @@ undefined
 RESULT: PASS Refund Ethers #2 - ac5 refund remaining
 1
 > 
-RESULT: refundEthers1_1Tx status=0x1 Success gas=100000 gasUsed=32983 costETH=0.000032983 costUSD=0.02848049067 @ ETH/USD=863.49 gasPrice=1 gwei block=45073 txIx=0 txId=0x78741975c9a53f874844c2c88ed4dea4a3244043b4045772351fd1012055e4d8 @ 1518680562 Thu, 15 Feb 2018 07:42:42 UTC
+RESULT: refundEthers1_1Tx status=0x1 Success gas=100000 gasUsed=33196 costETH=0.000033196 costUSD=0.02866441404 @ ETH/USD=863.49 gasPrice=1 gwei block=6814 txIx=0 txId=0xe67fa6c1715ce651da02344c385f45296e16b03222999346c8cf2959c9f47b15 @ 1518934739 Sun, 18 Feb 2018 06:18:59 UTC
 undefined
 > 
-RESULT: crowdsaleContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
-RESULT: crowdsale.vitToken=0x0ff172c7a940bb6767bf006ff6a244871bf81877
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
 RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
 RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
 RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
 RESULT: crowdsale.vitPerWei=18052 1.8052e-14
 RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
-RESULT: crowdsale.startTime=1518680480 Thu, 15 Feb 2018 07:41:20 UTC
-RESULT: crowdsale.endTime=1518680540 Thu, 15 Feb 2018 07:42:20 UTC
-RESULT: crowdsale.refundEndTime=1518680570 Thu, 15 Feb 2018 07:42:50 UTC
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
 RESULT: crowdsale.totalClaimableTokens=0 0
 RESULT: crowdsale.finalizedRefund=false
-RESULT: crowdsale.tokensSold=2e+27 2000000000
+RESULT: crowdsale.tokensSold=1.444169026e+27 1444169026
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
 RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
 RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
@@ -1181,26 +1192,26 @@ RESULT: crowdsale.claimableTokens('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=
 RESULT: crowdsale.claimableTokens('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationHistory('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.participationHistory('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=6.00005e+22 60000.5
-RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=5.0790548083314868158652e+22 50790.548083314868158652
+RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.00005e+22 40000.5
+RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=4e+22 40000
 RESULT: crowdsale.participationHistory('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationCaps('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa44a08d3f6933c69212114bb66e2df1813651844')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa55a151eb00fded1634d27d1127b4be4627079ea')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
-RESULT: EtherRefunded 0 #45073 {"from":"0xa55a151eb00fded1634d27d1127b4be4627079ea","weiAmount":"5.9000444604475958342566e+22"}
+RESULT: EtherRefunded 0 #6814 {"from":"0xa55a151eb00fded1634d27d1127b4be4627079ea","weiAmount":"3.9000444604475958342566e+22"}
 undefined
 > 
-RESULT: tokenContractAddress=0x0ff172c7a940bb6767bf006ff6a244871bf81877
-RESULT: token.owner=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
 RESULT: token.symbol=VIT
 RESULT: token.name=Vice
 RESULT: token.decimals=18
 RESULT: token.totalSupply=4000000000
 RESULT: token.mintingFinished=true
-RESULT: Transfer 0 #45073: from=0x3529089fbacf865e6771ddb8a76ac997963a5393 to=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976 value=1065076026.000000000000000024
+RESULT: Transfer 0 #6814: from=0x0a91add9e3e97057980da7826043aab2a2d4c35b to=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976 value=704036026.000000000000000036
 undefined
 > 
 RESULT: 
@@ -1208,8 +1219,8 @@ undefined
 > 
 > 
 > 
-RESULT: Waiting until 'refundEndTime' at 1518680570+0s=Thu, 15 Feb 2018 18:42:51 AEDT now=Thu, 15 Feb 2018 18:42:47 AEDT
-RESULT: Waited until 'refundEndTime' at at 1518680570+0s=Thu, 15 Feb 2018 18:42:51 AEDT now=Thu, 15 Feb 2018 18:42:51 AEDT
+RESULT: Waiting until 'refundEndTime' at 1518934748+0s=Sun, 18 Feb 2018 17:19:09 AEDT now=Sun, 18 Feb 2018 17:19:03 AEDT
+RESULT: Waited until 'refundEndTime' at at 1518934748+0s=Sun, 18 Feb 2018 17:19:09 AEDT now=Sun, 18 Feb 2018 17:19:09 AEDT
 RESULT: 
 undefined
 > 
@@ -1231,13 +1242,13 @@ undefined
 > 
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004486711000000000           0.000000000000000000 Account #0 - Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003866277000000000           0.000000000000000000 Account #1 - Contract Owner
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976    50790.603478838909816086  1083128026.000000000000000000 Account #2 - Wallet
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004480607000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003881686000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976    40000.055395524041657434  1277919000.000000000000000000 Account #2 - Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.055819917041657434        1000.000000000000000000 Account #5
-RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -50790.548279355868158652   916870974.000000000000000000 Account #6
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.055805556041657434        1000.000000000000000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -40000.000188889000000000   722080000.000000000000000000 Account #6
 RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
 RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
 RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
@@ -1263,8 +1274,8 @@ RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.00000000000000000
 RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
 RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
 RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
-RESULT: 32 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Crowdsale Contract
-RESULT: 33 0x0ff172c7a940bb6767bf006ff6a244871bf81877        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b        0.000000000000000000           0.000000000000000000 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                            4000000000.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -1274,24 +1285,25 @@ undefined
 RESULT: PASS Finalise Refund
 1
 > 
-RESULT: finaliseRefund_1Tx status=0x1 Success gas=100000 gasUsed=45200 costETH=0.0000452 costUSD=0.039029748 @ ETH/USD=863.49 gasPrice=1 gwei block=45084 txIx=0 txId=0x7f96f9f888ccd53d6a20f50a1c2a96ce8681aa18666e22e050e09df8030fcb48 @ 1518680573 Thu, 15 Feb 2018 07:42:53 UTC
+RESULT: finaliseRefund_1Tx status=0x1 Success gas=100000 gasUsed=45413 costETH=0.000045413 costUSD=0.03921367137 @ ETH/USD=863.49 gasPrice=1 gwei block=6826 txIx=0 txId=0x2211344f6384142be101334da0b530f953205d5410ad46c932b6365354cedc82 @ 1518934751 Sun, 18 Feb 2018 06:19:11 UTC
 undefined
 > 
-RESULT: crowdsaleContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
-RESULT: crowdsale.vitToken=0x0ff172c7a940bb6767bf006ff6a244871bf81877
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
 RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
 RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
 RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
 RESULT: crowdsale.vitPerWei=18052 1.8052e-14
 RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
-RESULT: crowdsale.startTime=1518680480 Thu, 15 Feb 2018 07:41:20 UTC
-RESULT: crowdsale.endTime=1518680540 Thu, 15 Feb 2018 07:42:20 UTC
-RESULT: crowdsale.refundEndTime=1518680570 Thu, 15 Feb 2018 07:42:50 UTC
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
 RESULT: crowdsale.totalClaimableTokens=0 0
 RESULT: crowdsale.finalizedRefund=true
-RESULT: crowdsale.tokensSold=2e+27 2000000000
+RESULT: crowdsale.tokensSold=1.444169026e+27 1444169026
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
 RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
 RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
@@ -1305,19 +1317,19 @@ RESULT: crowdsale.claimableTokens('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=
 RESULT: crowdsale.claimableTokens('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationHistory('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
 RESULT: crowdsale.participationHistory('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
-RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=6.00005e+22 60000.5
-RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=5.0790548083314868158652e+22 50790.548083314868158652
+RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.00005e+22 40000.5
+RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=4e+22 40000
 RESULT: crowdsale.participationHistory('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
 RESULT: crowdsale.participationCaps('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa44a08d3f6933c69212114bb66e2df1813651844')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa55a151eb00fded1634d27d1127b4be4627079ea')=10000000000000000000 10
 RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
 RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
-RESULT: FinalizedRefunds 0 #45084 {}
+RESULT: FinalizedRefunds 0 #6826 {}
 undefined
 > 
-RESULT: tokenContractAddress=0x0ff172c7a940bb6767bf006ff6a244871bf81877
-RESULT: token.owner=0x3529089fbacf865e6771ddb8a76ac997963a5393
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
 RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
 RESULT: token.symbol=VIT
 RESULT: token.name=Vice
@@ -1329,5 +1341,142 @@ undefined
 RESULT: 
 undefined
 > 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: Move Tokens
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                          Token Name
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.004623405000000000           0.000000000000000000 Account #0 - Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003881686000000000           0.000000000000000000 Account #1 - Contract Owner
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976    40000.055395524041657434  1277919000.000000000000000000 Account #2 - Wallet
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.055857999041657434         999.999999000000000000 Account #5
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9   -40000.000234457000000000   722079999.970000000000000000 Account #6
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000001000000000000 Account #7
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2       -0.000044787000000000           0.000000000000000000 Account #8
+RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.030000000000000000 Account #9
+RESULT: 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10
+RESULT: 11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Account #11
+RESULT: 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000   100000000.000000000000000000 Account #12
+RESULT: 13 0xadda9b762a00ff12711113bfdc36958b73d7f915        0.000000000000000000   100000000.000000000000000000 Account #13
+RESULT: 14 0xaeea63b5479b50f79583ec49dacdcf86ddeff392        0.000000000000000000   100000000.000000000000000000 Account #14
+RESULT: 15 0xaffa4d3a80add8ce4018540e056dacb649589394        0.000000000000000000   100000000.000000000000000000 Account #15
+RESULT: 16 0xb00bfde102270687324f9205b693859df64f8923        0.000000000000000000   100000000.000000000000000000 Account #16
+RESULT: 17 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98        0.000000000000000000   100000000.000000000000000000 Account #17
+RESULT: 18 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f        0.000000000000000000   100000000.000000000000000000 Account #18
+RESULT: 19 0xb33b7ecf5e47be3981c74d989d3af8b665b4b649        0.000000000000000000   100000000.000000000000000000 Account #19
+RESULT: 20 0xb44b43d59b738b088b690ae276c1e979aba8268d        0.000000000000000000   100000000.000000000000000000 Account #20
+RESULT: 21 0xb55b57d113b45481e31aaf03d6f4e5ad4ef325f8        0.000000000000000000   100000000.000000000000000000 Account #21
+RESULT: 22 0xb66bcb4e473de80e2c8a47ced10c22c705a5e602        0.000000000000000000   100000000.000000000000000000 Account #22
+RESULT: 23 0xb77bbbaa7c1649547ae61de4b80b91568c28351a        0.000000000000000000   100000000.000000000000000000 Account #23
+RESULT: 24 0xb88b728490b417e29b0784db30535db343830dba        0.000000000000000000   100000000.000000000000000000 Account #24
+RESULT: 25 0xb99b3d1f72edb05a0321db58eddcf83fd73c4ade        0.000000000000000000   100000000.000000000000000000 Account #25
+RESULT: 26 0xbaab56da883edbe5314b8005be410022c510ccae        0.000000000000000000   100000000.000000000000000000 Account #26
+RESULT: 27 0xbbbb9809de0456ce0e0cd660e6e4ceabef3f521c        0.000000000000000000   100000000.000000000000000000 Account #27
+RESULT: 28 0xbccb68dd0ac87ef290aef49870d155f076c87868        0.000000000000000000   100000000.000000000000000000 Account #28
+RESULT: 29 0xbddb726ee06906e104db210e6d0506f2b062e477        0.000000000000000000   100000000.000000000000000000 Account #29
+RESULT: 30 0xbeeb24ff18203658d0a1d4682ee3f36ad663ec87        0.000000000000000000   100000000.000000000000000000 Account #30
+RESULT: 31 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff        0.000000000000000000   100000000.000000000000000000 Account #31
+RESULT: 32 0x0a91add9e3e97057980da7826043aab2a2d4c35b        0.000000000000000000           0.000000000000000000 Crowdsale Contract
+RESULT: 33 0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c        0.000000000000000000           0.000000000000000000 Token 'VIT' 'Vice'
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT:                                                                            4000000000.000000000000000000 Total Token Balances
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: transfers1Tx status=0x1 Success gas=100000 gasUsed=52443 costETH=0.000052443 costUSD=0.04528400607 @ ETH/USD=863.49 gasPrice=1 gwei block=6831 txIx=0 txId=0x91d7bda6c468cc91c2dad82c5d7164ec9212c604c74e958217e45ff3559b2a47 @ 1518934756 Sun, 18 Feb 2018 06:19:16 UTC
+undefined
+> 
+RESULT: transfers2Tx status=0x1 Success gas=100000 gasUsed=45568 costETH=0.000045568 costUSD=0.03934751232 @ ETH/USD=863.49 gasPrice=1 gwei block=6831 txIx=1 txId=0xb26b5168adf3ad8b198a7615ade6977a42149e4b7318a84a7251c3f36b64e3e3 @ 1518934756 Sun, 18 Feb 2018 06:19:16 UTC
+undefined
+> 
+RESULT: transfers3Tx status=0x1 Success gas=100000 gasUsed=44787 costETH=0.000044787 costUSD=0.03867312663 @ ETH/USD=863.49 gasPrice=1 gwei block=6833 txIx=0 txId=0xd91dde83b33a1e6c3e01e8f4e399a61528792f8d7fc2b093cb256d1ebca4b588 @ 1518934758 Sun, 18 Feb 2018 06:19:18 UTC
+undefined
+> 
+RESULT: PASS Move Tokens - transfer 0.000001 tokens ac5 -> ac7. CHECK for movement
+1
+> 
+RESULT: PASS Move Tokens - approve 0.03 tokens ac6 -> ac8
+1
+> 
+RESULT: PASS Move Tokens - transferFrom 0.03 tokens ac6 -> ac9 by ac8. CHECK for movement
+1
+> 
+RESULT: crowdsaleContractAddress=0x0a91add9e3e97057980da7826043aab2a2d4c35b
+RESULT: crowdsale.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+RESULT: crowdsale.pendingOwner=0x0000000000000000000000000000000000000000
+RESULT: crowdsale.vitToken=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: crowdsale.fundingRecipient=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
+RESULT: crowdsale.TOKEN_UNIT=1000000000000000000
+RESULT: crowdsale.MAX_TOKENS_SOLD=2e+27 2000000000
+RESULT: crowdsale.vitPerWei=18052 1.8052e-14
+RESULT: crowdsale.RESTRICTED_PERIOD_DURATION=30
+RESULT: crowdsale.startTime=1518934658 Sun, 18 Feb 2018 06:17:38 UTC
+RESULT: crowdsale.endTime=1518934718 Sun, 18 Feb 2018 06:18:38 UTC
+RESULT: crowdsale.refundEndTime=1518934748 Sun, 18 Feb 2018 06:19:08 UTC
+RESULT: crowdsale.totalClaimableTokens=0 0
+RESULT: crowdsale.finalizedRefund=true
+RESULT: crowdsale.tokensSold=1.444169026e+27 1444169026
+RESULT: crowdsale.strategicPartnersPools[0,19]=0xacca534c9f62ab495bd986e002ddf0f054caae4f, 0xbffbd8f029ef0bd81cf754b53e8b3a5684f8b3ff
+RESULT: crowdsale.STRATEGIC_PARTNERS_POOL_ALLOCATION=1e+26 100000000
+RESULT: crowdsale.refundableEther('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
+RESULT: crowdsale.refundableEther('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
+RESULT: crowdsale.refundableEther('0xa55a151eb00fded1634d27d1127b4be4627079ea')=0 0
+RESULT: crowdsale.refundableEther('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
+RESULT: crowdsale.refundableEther('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
+RESULT: crowdsale.claimableTokens('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
+RESULT: crowdsale.claimableTokens('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
+RESULT: crowdsale.claimableTokens('0xa55a151eb00fded1634d27d1127b4be4627079ea')=0 0
+RESULT: crowdsale.claimableTokens('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
+RESULT: crowdsale.claimableTokens('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
+RESULT: crowdsale.participationHistory('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=0 0
+RESULT: crowdsale.participationHistory('0xa44a08d3f6933c69212114bb66e2df1813651844')=0 0
+RESULT: crowdsale.participationHistory('0xa55a151eb00fded1634d27d1127b4be4627079ea')=4.00005e+22 40000.5
+RESULT: crowdsale.participationHistory('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=4e+22 40000
+RESULT: crowdsale.participationHistory('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
+RESULT: crowdsale.participationCaps('0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0')=10000000000000000000 10
+RESULT: crowdsale.participationCaps('0xa44a08d3f6933c69212114bb66e2df1813651844')=10000000000000000000 10
+RESULT: crowdsale.participationCaps('0xa55a151eb00fded1634d27d1127b4be4627079ea')=10000000000000000000 10
+RESULT: crowdsale.participationCaps('0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9')=0 0
+RESULT: crowdsale.participationCaps('0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec')=0 0
+undefined
+> 
+RESULT: tokenContractAddress=0x30d3d589d8aaebf8f4aeb5892bdbe99eec7a4c4c
+RESULT: token.owner=0x0a91add9e3e97057980da7826043aab2a2d4c35b
+RESULT: token.pendingOwner=0x0000000000000000000000000000000000000000
+RESULT: token.symbol=VIT
+RESULT: token.name=Vice
+RESULT: token.decimals=18
+RESULT: token.totalSupply=4000000000
+RESULT: token.mintingFinished=true
+RESULT: Approval 0 #6831 owner=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 spender=0xa88a05d2b88283ce84c8325760b72a64591279a2 value=0.03
+RESULT: Transfer 0 #6831: from=0xa55a151eb00fded1634d27d1127b4be4627079ea to=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec value=0.000001
+RESULT: Transfer 1 #6833: from=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 to=0xa99a0ae3354c06b1459fd441a32a3f71005d7da0 value=0.03
+undefined
+> 
+RESULT: 
+undefined
 > 
 > 
