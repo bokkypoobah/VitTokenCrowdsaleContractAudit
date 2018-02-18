@@ -64,6 +64,8 @@ sale ends.
   Here is the commit to update the `approve(...)` functionality in OpenZeppelin -
   [change approve() to conform to ERC20. Fix #438](https://github.com/OpenZeppelin/zeppelin-solidity/commit/83918cad4b9f5bea6dcb3c0c18f3295b2484c825)
 
+  * [x] The requirement to set allowance to 0 to update a non-0 allowance was removed in [80a21e8](https://github.com/ViceIndustryToken/vit-token/commit/80a21e8933868125960a6278dc473a3ef61ddce3)
+
 <br />
 
 <hr />
@@ -164,6 +166,7 @@ in [test/test1results.txt](test/test1results.txt) and the detailed output saved 
 * [x] Claim tokens, claim all tokens
 * [x] Refund ethers, refund all ethers
 * [x] Finalise refund
+* [x] `transfer(...)`, `approve(...)` and `transferFrom(...)`
 
 <br />
 
