@@ -63,7 +63,7 @@ No potential vulnerabilities have been identified in the crowdsale and token con
 ## Scope
 
 This audit is into the technical aspects of the crowdsale contracts. The primary aim of this audit is to ensure that funds
-contributed to these contracts are not easily attacked or stolen by third parties. The secondary aim of this audit is that
+contributed to these contracts are not easily attacked or stolen by third parties. The secondary aim of this audit is to
 ensure the coded algorithms work as expected. This audit does not guarantee that that the code is bugfree, but intends to
 highlight any areas of weaknesses.
 
